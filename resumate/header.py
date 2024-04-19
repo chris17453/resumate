@@ -1,4 +1,4 @@
-from reportlab.platypus import Paragraph,Frame
+from reportlab.platypus import Paragraph,Frame,Image
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -26,8 +26,8 @@ def add_header(canvas, doc, metadata, styles):
     r_normalized = r / 255
     g_normalized = g / 255
     b_normalized = b / 255        
-    canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  # Set color to green (RGB)
-    canvas.rect(header.left,header.top, header.width, header.height, stroke=1, fill=1)
+    #canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  # Set color to green (RGB)
+    #canvas.rect(header.left,header.top, header.width, header.height, stroke=1, fill=1)
 
 
     header_frame = Frame(header.left, header.top,header.width,header.height)
@@ -35,24 +35,37 @@ def add_header(canvas, doc, metadata, styles):
 
     # List of paragraphs (Flowable objects) for the header
     story = [
-        Paragraph(f"<b>Name:</b> {resume['main_data']['name']}", styles['Title']),
-        Paragraph(f"<b>Address:</b> {resume['main_data']['address']}", styles['BodyText']),
-        Paragraph(f"<b>Phone:</b> {resume['main_data']['phone']}", styles['BodyText']),
-        Paragraph(f"<b>Email:</b> {resume['main_data']['email']}", styles['BodyText']),
+        Paragraph(f"{resume['main_data']['name']}", styles['Title']),
+        Paragraph(f"{resume['main_data']['position']}", styles['Subtitle']),
+        #Paragraph(f"<b>Address:</b> {resume['main_data']['address']}", styles['HeaderText']),
+        Paragraph(f"<b>Phone:</b> {resume['main_data']['phone']}", styles['HeaderText']),
+        Paragraph(f"<b>Email:</b> {resume['main_data']['email']}", styles['HeaderText']),
+        Paragraph(f"<b>Location:</b> {resume['main_data']['location']}", styles['HeaderText']),
+    ]
+    # Extracting links and creating hyperlink strings
+    link_strings = [
+        f'<a href="{link["url"]}">{link["name"].capitalize()}</a>' 
+        for link in sorted(resume['main_data'].get('links', []), key=lambda x: x.get('order', 0))
     ]
 
+    # Joining the link strings into a single string
+    links_combined = ' '.join(link_strings)
+    story.append(Paragraph(links_combined, styles['HeaderText']))
     # Calculate available width and starting height within the frame
     available_width = header_frame.width
     current_y = header_frame._y2
     # Draw each paragraph in the header frame on the canvas
     for flowable in story:
         flowable_width, flowable_height = flowable.wrap(header.width, header.height)  # Wrap content to fit the frame
-        print(flowable_width, flowable_height)
-        current_y -= flowable.style.leading+flowable.style.spaceAfter # Move up the start position for the next flowable
+        #print(flowable_width, flowable_height)
+        try:
+            current_y -= flowable.style.leading+flowable.style.spaceAfter # Move up the start position for the next flowable
+        except:
+            current_y -= flowable_height # Move up the start position for the next flowable
         flowable.drawOn(canvas, header_frame._x1, current_y)
         
-    canvas.setFillColorRGB(0, 1, 0)  # Set color to green (RGB)
-    canvas.rect(header.left,header.top, header.width, header.height, stroke=1, fill=0)
+    #canvas.setFillColorRGB(0, 1, 0)  # Set color to green (RGB)
+    #canvas.rect(header.left,header.top, header.width, header.height, stroke=1, fill=0)
 
     
 
@@ -94,22 +107,23 @@ def add_footer(canvas,doc,metadata, styles):
     r_normalized = r / 255
     g_normalized = g / 255
     b_normalized = b / 255        
-    canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  # Set color to green (RGB)
-    canvas.rect(footer.left,footer.top, footer.width, footer.height, stroke=1, fill=1)
+    #canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  # Set color to green (RGB)
+    #canvas.rect(footer.left,footer.top, footer.width, footer.height, stroke=1, fill=1)
 
-
+    #print(metadata)
 
     # List of paragraphs (Flowable objects) for the header
     story = [
-        Paragraph(f"<b>Page: 1 of 1</b> ", styles['Heading2']),
+        Paragraph(f"<b>Page: {doc.page} of {metadata['pages']}</b> ", styles['Heading2']),
     ]
+    #print(metadata['pages'])
 
     # Calculate available width and starting height within the frame
     current_y = frame._y2
     # Draw each paragraph in the header frame on the canvas
     for flowable in story:
         flowable_width, flowable_height = flowable.wrap(footer.width, footer.height)  # Wrap content to fit the frame
-        print(flowable_width, flowable_height)
+        #print(flowable_width, flowable_height)
         current_y -= flowable.style.leading+flowable.style.spaceAfter # Move up the start position for the next flowable
         flowable.drawOn(canvas, frame._x1, current_y)
 

@@ -28,11 +28,16 @@ def create_styles(style_data):
 
         # Convert alignment value to ReportLab enum
         if 'alignment' in style_attrs:
-            alignment = style_attrs['alignment'].upper()
-            if alignment in alignment_mapping:
-                style_attrs['alignment'] = alignment_mapping[alignment]
+
+            if isinstance(style_attrs['alignment'], str):
+                alignment = style_attrs['alignment'].upper()
+                if alignment in alignment_mapping:
+                    style_attrs['alignment'] = alignment_mapping[alignment]
+                else:
+                    raise ValueError(f"Invalid alignment value '{alignment}'")
             else:
-                raise ValueError(f"Invalid alignment value '{alignment}'")
+                alignment = style_attrs['alignment']
+
 
         # Create the custom style, ensuring that 'parent' is an actual ParagraphStyle object
         custom_styles[style_name] = ParagraphStyle(name=style_name, parent=parent_style, **style_attrs)

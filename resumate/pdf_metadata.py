@@ -78,13 +78,43 @@ def create_page_template(metadata):
             height,
             id=frame_id,
         )
-        #frames.append(frame)
-        page_templates.append( PageTemplate(id=frame_id, frames=frame,pagesize=letter,onPage=partial(header_footer, metadata=metadata,styles=styles)))
+        frames.append(frame)
+        page_templates.append( PageTemplate(id=frame_id, frames=frame,pagesize=letter))
         #print (f"{x1},{y1},{width},{height},{frame_id}")
     metadata['header']=frames_dict['header']
     metadata['footer']=frames_dict['footer']
     
     return [frames_dict,page_templates,styles]
+
+
+def create_combined_template(metadata):
+    styles=create_styles(metadata['styles'])
+    
+    frames = []
+    frames_dict = {}
+    for frame_data in metadata['frames']:
+        x1=_eval_with_units(frame_data.get('left', '0'), frames_dict)
+        y1=_eval_with_units(frame_data.get('top', '0'), frames_dict)
+        width=_eval_with_units(frame_data.get('width', '0'), frames_dict)
+        height=_eval_with_units(frame_data.get('height', '0'), frames_dict)
+        frame_id=frame_data.get('id', '')
+        bg_color=frame_data.get('background-color', None)
+        frames_dict[frame_id] =frame_def(frame_id,x1,y1,width,height,bg_color)
+        
+        if frame_id=='header' or frame_id=='footer':
+            continue
+        frame = Frame(
+            x1,
+            y1,
+            width,
+            height,
+            id=frame_id,
+        )
+        frames.append(frame)
+    
+    page_template=PageTemplate(id=frame_id, frames=frames,pagesize=letter,onPage=partial(header_footer, metadata=metadata,styles=styles))
+    
+    return page_template
 
 def _eval_with_units(expression, frames):
     # Define units and dimensions

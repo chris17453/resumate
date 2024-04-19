@@ -55,12 +55,22 @@ def generate_resume_data(num_experiences):
         'main_data': {
             'name': fake.name(),
             'address': fake.address(),
+            'location': fake.city()+", "+fake.state(),
             'phone': fake.phone_number(),
             'email': fake.email(),
             'position':generate_position(),
             'links': generate_links(),
-            'picture': 'Path_to_picture.jpg'
+            'picture': 'assets/avatar.png'
         },
+        'summary': fake.paragraph(nb_sentences=5),
+        'cover_page': fake.paragraph(nb_sentences=15),
+        'education': {
+           'school': fake.company() + " School",
+           'course':  fake.catch_phrase() + " Course",
+           'from':fake.date(),
+           'to':fake.date(),
+        },
+
         'experiences': [generate_experience() for _ in range(num_experiences)],
         'skills': [generate_skills(category) for category in ['Technical', 'Management', 'Communication', 'Analytical']],
         'cover_page': fake.boolean(),

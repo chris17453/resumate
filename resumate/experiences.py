@@ -1,7 +1,16 @@
 from reportlab.platypus import Paragraph, Spacer
+from .paragraph import ParagraphD, LineDrawer, SpacerD
+
+
+
+
+
 
 def add_experiences(experiences, styles):
     story=[]
+    story.append(ParagraphD(f"EXPERIENCE", styles['Heading1']))
+    story.append(LineDrawer(5,styles['Heading2'].textColor))
+
     for experience in experiences:
         story.extend(add_experience(experience, styles))    
     return story
@@ -9,12 +18,13 @@ def add_experiences(experiences, styles):
 def add_experience(experience, styles):
 
     story=[]
-    story.append(Paragraph(f"<b>Role:</b> {experience['role']}", styles['Heading2']))
-    story.append(Paragraph(f"Company: {experience['company']}", styles['BodyText']))
-    story.append(Paragraph(f"From {experience['start']} to {experience['finished']}, Currently working: {'Yes' if experience['currently_working'] else 'No'}", styles['BodyText']))
-    story.append(Paragraph(f"Feature Comment: {experience['feature_comment']}", styles['BodyText']))
+    story.append(ParagraphD(f"{experience['role']}", styles['Heading2']))
+    story.append(ParagraphD(f"{experience['start']} - {experience['finished']}", styles['Subtitle_Right']))
+    story.append(ParagraphD(f"{experience['company']}", styles['Subtitle']))
+    story.append(SpacerD(1, 5)  )
+    story.append(ParagraphD(f"{experience['feature_comment']}", styles['BodyText']))
     # Successes
     successes = ', '.join(experience['successes'])
-    story.append(Paragraph(f"Successes: {successes}", styles['Heading2']))
-    story.append(Spacer(1, 12))
+    story.append(ParagraphD(f"Successes: {successes}", styles['BodyText']))
+    story.append(SpacerD(1, 10))
     return story
