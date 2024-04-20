@@ -1,21 +1,20 @@
 import io
-import copy
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import BaseDocTemplate,FrameBreak,NextPageTemplate,KeepTogether,Frame,PageBreak
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import BaseDocTemplate,FrameBreak,PageBreak
 
 
 from .styles import create_styles
-from .pdf_metadata import load_page_template_metadata, create_page_template, create_combined_template
+from .pdf_metadata import load_page_template_metadata, create_page_template, create_combined_template, calculate_objects
 from .experiences import add_experiences
 from .skills import add_skills
-from reportlab.lib import colors
 
 
 from .paragraph import rendered_details
 from .summary import add_summary
 from .education import add_education
-
+from .achievements import add_achievements
+from .strengths import add_strengths
+from .passions import add_passions
     
 
 def generate_pdf(resume_data, pdf_file, metadata_file):
@@ -27,6 +26,7 @@ def generate_pdf(resume_data, pdf_file, metadata_file):
     metadata = load_page_template_metadata(metadata_file)
     metadata['resume']=resume_data
     # Create page template
+    metadata['objects'] =calculate_objects(metadata)
     frame_dict,page_template,styles = create_page_template(metadata)
     buffer1 = io.BytesIO()
     buffer2 = io.BytesIO()
@@ -85,8 +85,11 @@ def generate_pdf(resume_data, pdf_file, metadata_file):
     # Next Column
     # dont reasign.. funky stuff
     rendered_details.clear()
+    achievements=add_achievements( resume_data['achievements'], styles)
     skill=add_skills( resume_data['skills'], styles)
-    flowables=skill
+    passions=add_passions( resume_data['passions'], styles)
+    strengths=add_strengths( resume_data['strengths'], styles)
+    flowables=strengths+achievements+skill+passions
     #print(skill)
     doc2.build(flowables)
 

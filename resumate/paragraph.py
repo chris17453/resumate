@@ -27,7 +27,7 @@ class ParagraphD(Paragraph):
         capture_details(self,  x, y)
         frame_height = self._frame._height  # Get the available height of the frame
         line_height = frame_height - self.height  # Calculate the position of the line relative to the bottom of the frame
-        print(y,line_height)
+        #print(y,line_height)
 
 class LineDrawer(Flowable):
     def __init__(self, height=0, color=None):

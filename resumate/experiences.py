@@ -22,9 +22,9 @@ def add_experience(experience, styles):
     story.append(ParagraphD(f"{experience['start']} - {experience['finished']}", styles['Subtitle_Right']))
     story.append(ParagraphD(f"{experience['company']}", styles['Subtitle']))
     story.append(SpacerD(1, 5)  )
-    story.append(ParagraphD(f"{experience['feature_comment']}", styles['BodyText']))
+    story.append(ParagraphD(f"{experience['feature_comment']}", styles['Body_Text']))
     # Successes
     successes = ', '.join(experience['successes'])
-    story.append(ParagraphD(f"Successes: {successes}", styles['BodyText']))
+    story.append(ParagraphD(f"Successes: {successes}", styles['Body_Text']))
     story.append(SpacerD(1, 10))
     return story

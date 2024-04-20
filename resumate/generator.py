@@ -50,7 +50,7 @@ def generate_links():
             'order': random.randint(1, 5)
         }
     ]
-def generate_resume_data(num_experiences):
+def generate_resume_data(num_experiences,num_achievements=5,num_strengths=1,num_passions=2):
     return {
         'main_data': {
             'name': fake.name(),
@@ -71,16 +71,19 @@ def generate_resume_data(num_experiences):
            'to':fake.date(),
         },
 
+        'certificates': {
+           'school': fake.company() + " School",
+           'course':  fake.catch_phrase() + " Course",
+           'date':fake.date(),
+        },
+        'strengths':  [fake.paragraph(nb_sentences=3) for _ in range(num_strengths)],
+        'passions': [fake.paragraph(nb_sentences=3) for _ in range(num_passions)],
         'experiences': [generate_experience() for _ in range(num_experiences)],
+        'achievements': [fake.paragraph(nb_sentences=3) for _ in range(num_achievements)],
         'skills': [generate_skills(category) for category in ['Technical', 'Management', 'Communication', 'Analytical']],
-        'cover_page': fake.boolean(),
-        'theme': {
-            'color_scheme': {
-                'background': fake.hex_color(),
-                'foreground': fake.hex_color()
-            }
-        }
+          'cover_page': fake.boolean()
     }
+     
 
 def generated_resume(filename, num_experiences):
     resume_data = generate_resume_data(num_experiences)

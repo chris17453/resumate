@@ -2,45 +2,66 @@ from reportlab.platypus import Paragraph,Frame,Image
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from .shapes import shape_circle,shape_rectangle, shape_picture
+from reportlab.graphics import renderPDF
+from reportlab.lib.utils import ImageReader
+from reportlab.graphics.shapes import Drawing
+
+
+
+def draw_shapes(metadata,canvas):
+    shapes=metadata['objects']
+
+    for shape in shapes:
+        item=shapes[shape]
+        if not isinstance( item,shape_rectangle) and not isinstance( item,shape_circle) :
+            continue
+        
+        hex_color=item.background_color
+        if hex_color==None:
+            continue
+        else :
+            r = int(hex_color[1:3], 16)
+            g = int(hex_color[3:5], 16)
+            b = int(hex_color[5:7], 16)
+        # Convert to normalized RGB
+        r_normalized = r / 255
+        g_normalized = g / 255
+        b_normalized = b / 255        
+        if item.type=='rect':
+            canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  
+            canvas.rect(item.left,item.top, item.width, item.height, stroke=0, fill=1)
+
+        if item.type=='circle':
+            canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  
+            canvas.circle(item.left,item.top, item.diameter, stroke=0, fill=1)
 
 
 def header_footer(canvas, doc, metadata, styles):
     add_header(canvas, doc, metadata,styles)
     add_footer(canvas, doc, metadata,styles)
 
+
+
 def add_header(canvas, doc, metadata, styles):
     resume=metadata['resume']
   # Define the dimensions and position for the header frame
     header=metadata['header']
-    
-    hex_color=header.background_color
-    if hex_color==None:
-        r = 0
-        g = 0
-        b = 0
-    else :
-        r = int(hex_color[1:3], 16)
-        g = int(hex_color[3:5], 16)
-        b = int(hex_color[5:7], 16)
-    # Convert to normalized RGB
-    r_normalized = r / 255
-    g_normalized = g / 255
-    b_normalized = b / 255        
-    #canvas.setFillColorRGB(r_normalized,g_normalized, b_normalized)  # Set color to green (RGB)
-    #canvas.rect(header.left,header.top, header.width, header.height, stroke=1, fill=1)
 
+    # draw the background objects
+    draw_shapes(metadata,canvas)
 
     header_frame = Frame(header.left, header.top,header.width,header.height)
     
 
     # List of paragraphs (Flowable objects) for the header
     story = [
-        Paragraph(f"{resume['main_data']['name']}", styles['Title']),
+        Paragraph(f"{resume['main_data']['name']}", styles['Header_Title']),
         Paragraph(f"{resume['main_data']['position']}", styles['Subtitle']),
         #Paragraph(f"<b>Address:</b> {resume['main_data']['address']}", styles['HeaderText']),
-        Paragraph(f"<b>Phone:</b> {resume['main_data']['phone']}", styles['HeaderText']),
-        Paragraph(f"<b>Email:</b> {resume['main_data']['email']}", styles['HeaderText']),
-        Paragraph(f"<b>Location:</b> {resume['main_data']['location']}", styles['HeaderText']),
+        Paragraph(f"<b>Phone:</b> {resume['main_data']['phone']}", styles['Header_Text']),
+        Paragraph(f"<b>Email:</b> {resume['main_data']['email']}", styles['Header_Text']),
+        Paragraph(f"<b>Location:</b> {resume['main_data']['location']}", styles['Header_Text']),
     ]
     # Extracting links and creating hyperlink strings
     link_strings = [
@@ -50,7 +71,7 @@ def add_header(canvas, doc, metadata, styles):
 
     # Joining the link strings into a single string
     links_combined = ' '.join(link_strings)
-    story.append(Paragraph(links_combined, styles['HeaderText']))
+    story.append(Paragraph(links_combined, styles['Header_Text']))
     # Calculate available width and starting height within the frame
     available_width = header_frame.width
     current_y = header_frame._y2
@@ -63,28 +84,34 @@ def add_header(canvas, doc, metadata, styles):
         except:
             current_y -= flowable_height # Move up the start position for the next flowable
         flowable.drawOn(canvas, header_frame._x1, current_y)
+
+    profile_image(metadata['objects']['picture'],resume['main_data']['picture'],canvas)    
+
+def profile_image(object,image_path,c):
+    image = ImageReader(image_path)
+    image_width, image_height = image.getSize()
+    aspect_ratio = image_width / image_height
+    new_width = object.max_width
+    new_height = new_width / aspect_ratio
+
+    # Determine the diameter of the circle to be the smaller of the new dimensions
+    circle_diameter = min(new_width, new_height)
+
+    # Position for the image
+    xpos, ypos = object.left, object.top
+
+    if object.mask=='circle':
+        # Draw a circle mask
+        c.saveState()
+        path = c.beginPath()  # Start a new path for clipping
+        # Position the circle to be centered over the image
+        path.circle(xpos + new_width / 2, ypos + new_height / 2, circle_diameter / 2)
+        c.clipPath(path, stroke=0, fill=0)  # Use the path for clipping
+        c.drawImage(image, xpos, ypos, new_width, new_height, mask='auto')  # Draw the image within the clipped path
+        c.restoreState()  # Restore the original state (removing the clipping path)
+    else:
+        c.drawImage(image, xpos, ypos, new_width, new_height, mask='auto')  # Draw the image within the clipped path
         
-    #canvas.setFillColorRGB(0, 1, 0)  # Set color to green (RGB)
-    #canvas.rect(header.left,header.top, header.width, header.height, stroke=1, fill=0)
-
-    
-
-    # Finish up
-
-    ## Optional: Include an image if available
-    #if 'picture' in resume['main_data'] and resume['main_data']['picture']:
-    #    try:
-    #        img_path = resume['main_data']['picture']
-    #        img = Image(img_path, width=1 * inch, height=1 * inch)
-    #        if current_height >= img.height:
-    #            img.drawOn(canvas, header_frame._x2 - img.width, header_frame._y2 - img.height)
-    #    except Exception as e:
-    #        error_msg = Paragraph(f"Failed to load image: {e}", styles['BodyText'])
-    #        error_msg_width, error_msg_height = error_msg.wrap(available_width, current_height)
-    #        if error_msg_height <= current_height:
-    #            error_msg.drawOn(canvas, header_frame._x1, header_frame._y2 - error_msg_height)
-
-
 
 
 

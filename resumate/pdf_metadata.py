@@ -7,34 +7,7 @@ import yaml
 from .header import header_footer
 from .styles import create_styles
 
-class frame_def:
-    def __init__(self, id, left, top, width, height,background_color=None):
-        self.id = id
-        self._left = left
-        self._top = top
-        self._width = width
-        self._height = height
-        self._background_color = background_color
-
-    @property
-    def left(self):
-        return self._left
-
-    @property
-    def top(self):
-        return self._top
-
-    @property
-    def width(self):
-        return self._width
-
-    @property
-    def height(self):
-        return self._height
-    @property
-    def background_color(self):
-        return self._background_color
-
+from .shapes import shape_circle,shape_rectangle, shape_picture
 
 def load_resume_from_yaml(yaml_file):
     """
@@ -52,6 +25,47 @@ def load_page_template_metadata(metadata_file):
     return metadata.get('page_template', {})
 
 
+def calculate_objects(metadata):
+    objects = {}
+    for item in metadata['frames']:
+        x1=_eval_with_units(item.get('left', '0'), objects)
+        y1=_eval_with_units(item.get('top', '0'), objects)
+        width=_eval_with_units(item.get('width', '0'), objects)
+        height=_eval_with_units(item.get('height', '0'), objects)
+        item_id=item.get('id', '')
+        bg_color=item.get('background-color', None)
+        objects[item_id] =shape_rectangle(item_id,x1,y1,width,height,bg_color)
+    
+    item=metadata['picture']
+    x1=_eval_with_units(item.get('left', '0'), objects)
+    y1=_eval_with_units(item.get('top', '0'), objects)
+    max_width=_eval_with_units(item.get('max_width', '0'), objects)
+    max_height=_eval_with_units(item.get('max_height', '0'), objects)
+    mask=item.get('mask', 'circle')
+    item_id=item.get('id', '')
+    bg_color=item.get('background-color', None)
+    objects[item_id] =shape_picture(item_id,x1,y1,max_width,max_height,mask,bg_color)
+
+    
+    for item in metadata['shapes']:
+        item_id=item.get('id', '')
+        item_type=item.get('type', '')
+        if item_type=='rect':
+            x1=_eval_with_units(item.get('left', '0'), objects)
+            y1=_eval_with_units(item.get('top', '0'), objects)
+            width=_eval_with_units(item.get('width', '0'), objects)
+            height=_eval_with_units(item.get('height', '0'), objects)
+            bg_color=item.get('background-color', None)
+            objects[item_id] =shape_rectangle(item_id,x1,y1,width,height,bg_color)
+        if item_type=='circle':
+            x1=_eval_with_units(item.get('left', '0'), objects)
+            y1=_eval_with_units(item.get('top', '0'), objects)
+            diameter=_eval_with_units(item.get('diameter', '0'), objects)
+            bg_color=item.get('background-color', None)
+            objects[item_id] =shape_circle(item_id,x1,y1,diameter,bg_color)
+    
+    return objects
+
 
 
 
@@ -59,28 +73,18 @@ def create_page_template(metadata):
     styles=create_styles(metadata['styles'])
     
     frames = []
-    frames_dict = {}
+    frames_dict = metadata['objects']
     page_templates=[]
+
     for frame_data in metadata['frames']:
-        x1=_eval_with_units(frame_data.get('left', '0'), frames_dict)
-        y1=_eval_with_units(frame_data.get('top', '0'), frames_dict)
-        width=_eval_with_units(frame_data.get('width', '0'), frames_dict)
-        height=_eval_with_units(frame_data.get('height', '0'), frames_dict)
         frame_id=frame_data.get('id', '')
-        bg_color=frame_data.get('background-color', None)
-        frames_dict[frame_id] =frame_def(frame_id,x1,y1,width,height,bg_color)
+        shape=frames_dict[frame_id]
         if frame_id=='header' or frame_id=='footer':
             continue
-        frame = Frame(
-            x1,
-            y1,
-            width,
-            height,
-            id=frame_id,
-        )
+        frame = Frame(shape.left,shape.top,shape.width,shape.height,id=shape.id,)
         frames.append(frame)
         page_templates.append( PageTemplate(id=frame_id, frames=frame,pagesize=letter))
-        #print (f"{x1},{y1},{width},{height},{frame_id}")
+        
     metadata['header']=frames_dict['header']
     metadata['footer']=frames_dict['footer']
     
@@ -89,7 +93,6 @@ def create_page_template(metadata):
 
 def create_combined_template(metadata):
     styles=create_styles(metadata['styles'])
-    
     frames = []
     frames_dict = {}
     for frame_data in metadata['frames']:
@@ -99,7 +102,7 @@ def create_combined_template(metadata):
         height=_eval_with_units(frame_data.get('height', '0'), frames_dict)
         frame_id=frame_data.get('id', '')
         bg_color=frame_data.get('background-color', None)
-        frames_dict[frame_id] =frame_def(frame_id,x1,y1,width,height,bg_color)
+        frames_dict[frame_id] =shape_rectangle(frame_id,x1,y1,width,height,bg_color)
         
         if frame_id=='header' or frame_id=='footer':
             continue
@@ -125,9 +128,12 @@ def _eval_with_units(expression, frames):
     frames['page_width']= page_width
     frames['page_height']= page_height
     
-    expression=expression.replace("inch","*inch")
-    # Evaluate the expression using local and global scope
-    result = eval(expression, {}, frames)
-    #print (expression,":",result)
-    return result
-
+    if not isinstance(expression, int):
+        #print (expression)
+        expression  = expression.replace("inch", "*inch")
+        result = eval(expression  , {}, frames)
+            
+        #print (expression,":",result)
+        return result
+    # if its alreadyu calculated/int
+    return expression
