@@ -3,8 +3,9 @@ from reportlab.platypus import KeepTogether
 from .paragraph import ParagraphD, LineDrawer
 
 def add_education(education, styles):
+    heading="Education".upper()
     story = []
-    story.append(ParagraphD("EDUCATION", styles['Heading1']))
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
     
     # Add school name

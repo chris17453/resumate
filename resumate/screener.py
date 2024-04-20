@@ -3,8 +3,9 @@ from .paragraph import ParagraphD, LineDrawer, SpacerD
 
 # Function to add screener data to the document
 def add_screener(screener, styles):
+    heading="Screener Information".upper()
     story = []
-    story.append(ParagraphD("Screener Information", styles['Heading1']))
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
 
     # Adding each item from screener data

@@ -5,8 +5,9 @@ from .paragraph import ParagraphD, LineDrawer, SpacerD
 
 # Function to add references to the document
 def add_references(references, styles):
+    heading="References".upper()
     story = []
-    story.append(ParagraphD("REFERENCES", styles['Heading1']))
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
 
     for reference in references:

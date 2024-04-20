@@ -7,6 +7,17 @@ fake = Faker()
 
 # Define a list of possible relationship types
 
+def get_certificates(count):
+    certs = []
+    for _ in range(count):
+        certificate = {
+            'school': fake.company() + " School",
+            'course': fake.catch_phrase() + " Course",
+            'date': fake.date()
+        }
+        certs.append(certificate)
+    return certs
+
 # Function to generate a random relationship type
 def get_relationship_type():
     relationship_types = [
@@ -66,7 +77,7 @@ def generate_links():
             'order': random.randint(1, 5)
         }
     ]
-def generate_resume_data(num_experiences,num_achievements=5,num_strengths=1,num_passions=2):
+def generate_resume_data(num_experiences,num_achievements=5,num_strengths=1,num_passions=2,certificate_count=2):
     return {
         'main_data': {
             'name': fake.name(),
@@ -87,11 +98,7 @@ def generate_resume_data(num_experiences,num_achievements=5,num_strengths=1,num_
            'to':fake.date(),
         },
 
-        'certificates': {
-           'school': fake.company() + " School",
-           'course':  fake.catch_phrase() + " Course",
-           'date':fake.date(),
-        },
+        'certificates': get_certificates(certificate_count),
         'screener': {
             'veteran': fake.boolean(),
             'disability': fake.boolean(),

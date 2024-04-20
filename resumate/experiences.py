@@ -7,8 +7,9 @@ from .paragraph import ParagraphD, LineDrawer, SpacerD
 
 
 def add_experiences(experiences, styles):
-    story=[]
-    story.append(ParagraphD(f"EXPERIENCE", styles['Heading1']))
+    heading="Experience".upper()
+    story = []
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
 
     for experience in experiences:

@@ -2,8 +2,9 @@ from reportlab.platypus import KeepTogether
 from .paragraph import ParagraphD, LineDrawer, SpacerD
 
 def add_skills(skills, styles):
-    story=[]
-    story.append(ParagraphD(f"Skills", styles['Heading1']))
+    heading="Skills".upper()
+    story = []
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
 
     for skill in skills:

@@ -4,8 +4,9 @@ from reportlab.platypus import KeepTogether
 
 
 def add_achievements(achievements, styles):
-    story=[]
-    story.append(ParagraphD(f"Achievements", styles['Heading1']))
+    heading="Achievements".upper()
+    story = []
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
 
     for item in achievements:

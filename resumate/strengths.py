@@ -2,8 +2,9 @@ from reportlab.platypus import KeepTogether
 from .paragraph import ParagraphD, LineDrawer, SpacerD
 
 def add_strengths(strengths, styles):
-    story=[]
-    story.append(ParagraphD(f"Strengths", styles['Heading1']))
+    heading="Strengths".upper()
+    story = []
+    story.append(ParagraphD(heading, styles['Heading1']))
     story.append(LineDrawer(5,styles['Heading2'].textColor))
 
     for item in strengths:

@@ -3,12 +3,9 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import BaseDocTemplate,FrameBreak,PageBreak
 
 
-from .styles import create_styles
 from .pdf_metadata import load_page_template_metadata, create_page_template, create_combined_template, calculate_objects
 from .experiences import add_experiences
 from .skills import add_skills
-
-
 from .paragraph import rendered_details
 from .summary import add_summary
 from .education import add_education
@@ -17,6 +14,8 @@ from .strengths import add_strengths
 from .passions import add_passions
 from .screener import add_screener
 from .references import add_references
+from .certificates import add_certificates
+
 
 def generate_pdf(resume_data, pdf_file, metadata_file):
     """
@@ -58,8 +57,8 @@ def generate_pdf(resume_data, pdf_file, metadata_file):
     exp=add_experiences(resume_data['experiences'],styles)
     edu=add_education(resume_data['education'],styles)
     references=add_references(resume_data['references'],styles)
-
-    flowables=summary+exp+edu+references
+    certificates=add_certificates(resume_data['certificates'],styles)
+    flowables=summary+exp+edu+certificates+references
 
 
     doc1.build(flowables)
