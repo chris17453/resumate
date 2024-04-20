@@ -1,11 +1,7 @@
 from reportlab.platypus import Paragraph,Frame,Image
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
 from .shapes import shape_circle,shape_rectangle, shape_picture
-from reportlab.graphics import renderPDF
 from reportlab.lib.utils import ImageReader
-from reportlab.graphics.shapes import Drawing
+from .paragraph import LineDrawer, ParagraphD
 
 
 
@@ -141,7 +137,9 @@ def add_footer(canvas,doc,metadata, styles):
 
     # List of paragraphs (Flowable objects) for the header
     story = [
-        Paragraph(f"<b>Page: {doc.page} of {metadata['pages']}</b> ", styles['Heading2']),
+        LineDrawer(5,styles['Heading2'].textColor,frame),
+        Paragraph(f"Page {doc.page} of {metadata['pages']} ", styles['Footer']),
+
     ]
     #print(metadata['pages'])
 
@@ -151,7 +149,10 @@ def add_footer(canvas,doc,metadata, styles):
     for flowable in story:
         flowable_width, flowable_height = flowable.wrap(footer.width, footer.height)  # Wrap content to fit the frame
         #print(flowable_width, flowable_height)
-        current_y -= flowable.style.leading+flowable.style.spaceAfter # Move up the start position for the next flowable
+        try:
+            current_y -= flowable.style.leading+flowable.style.spaceAfter # Move up the start position for the next flowable
+        except:
+            current_y -= flowable_height # Move up the start position for the next flowable
         flowable.drawOn(canvas, frame._x1, current_y)
 
 

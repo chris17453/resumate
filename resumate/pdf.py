@@ -15,7 +15,8 @@ from .education import add_education
 from .achievements import add_achievements
 from .strengths import add_strengths
 from .passions import add_passions
-    
+from .screener import add_screener
+from .references import add_references
 
 def generate_pdf(resume_data, pdf_file, metadata_file):
     """
@@ -56,8 +57,9 @@ def generate_pdf(resume_data, pdf_file, metadata_file):
 
     exp=add_experiences(resume_data['experiences'],styles)
     edu=add_education(resume_data['education'],styles)
+    references=add_references(resume_data['references'],styles)
 
-    flowables=summary+exp+edu
+    flowables=summary+exp+edu+references
 
 
     doc1.build(flowables)
@@ -85,11 +87,12 @@ def generate_pdf(resume_data, pdf_file, metadata_file):
     # Next Column
     # dont reasign.. funky stuff
     rendered_details.clear()
+    screener=add_screener(resume_data['screener'],styles)
     achievements=add_achievements( resume_data['achievements'], styles)
     skill=add_skills( resume_data['skills'], styles)
     passions=add_passions( resume_data['passions'], styles)
     strengths=add_strengths( resume_data['strengths'], styles)
-    flowables=strengths+achievements+skill+passions
+    flowables=screener+strengths+achievements+skill+passions
     #print(skill)
     doc2.build(flowables)
 

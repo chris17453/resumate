@@ -1,7 +1,6 @@
 from reportlab.platypus import Paragraph, Spacer
+from reportlab.platypus import KeepTogether
 from .paragraph import ParagraphD, LineDrawer
-
-from .paragraph import ParagraphD
 
 def add_education(education, styles):
     story = []
@@ -22,4 +21,4 @@ def add_education(education, styles):
     
     story.append(Spacer(1, 12))
     
-    return story
+    return [KeepTogether(story)]

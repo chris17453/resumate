@@ -30,11 +30,13 @@ class ParagraphD(Paragraph):
         #print(y,line_height)
 
 class LineDrawer(Flowable):
-    def __init__(self, height=0, color=None):
+    def __init__(self, height=0, color=None,frame=None):
         super().__init__()
         self.width = 1
         self.height = height
         self.color = color
+        self._frame=frame
+        
 
     def draw(self):
         self.canv.setStrokeColor(self.color)

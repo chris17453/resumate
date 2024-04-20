@@ -1,349 +1,319 @@
 achievements:
-- Simply somebody see task. For trial describe save floor although. Listen down his
-  total.
-- Computer tend Mrs bed cover rock. Morning positive since police subject family fine.
-  Condition doctor consider next world station no. Eat resource school live move write.
-- You should maintain blood police. Student thousand scene watch food.
-- Development degree thank light general.
-- Particularly ground mouth run manager. Prepare way right produce develop. Soldier
-  produce stop conference coach soon generation someone.
+- Else south surface again local mission available. Yeah member husband. Major maintain
+  garden office manage military commercial.
+- Product trade often machine teacher center city. Above learn person doctor theory.
+- Read blue its single near meeting. Tv high order floor adult. From take hundred.
+- Area design meeting else hard know strong. Attack go peace control unit. Situation
+  pick during deep official style.
+- Second truth up. Forward quite choose blood long. Artist who tough well.
 certificates:
-  course: Reduced analyzing info-mediaries Course
-  date: '1973-01-01'
-  school: Horn-Johnson School
+  course: Down-sized radical migration Course
+  date: '1996-11-14'
+  school: Stone Group School
 cover_page: false
 education:
-  course: Triple-buffered mobile structure Course
-  from: '2011-10-22'
-  school: Black-Andrews School
-  to: '1986-02-28'
+  course: Team-oriented incremental archive Course
+  from: '2018-04-06'
+  school: Harvey, Wilkins and Hart School
+  to: '1970-10-09'
 experiences:
-- company: Dougherty, Schmidt and Bauer
-  currently_working: true
-  feature_comment: How drive room shake price different. Center stand against.
-  finished: '2022-06-09'
-  role: Museum/gallery conservator
+- company: Smith, Cunningham and Moore
+  currently_working: false
+  feature_comment: Born board young only.
+  finished: '2024-02-23'
+  role: Exhibition designer
+  skills_used:
+  - category: Technical
+    skills:
+    - JavaScript
+    - Docker
+    - AWS
+  start: '2015-10-23'
+  successes:
+  - Forward interview agree rest.
+  - Practice current Mr pass.
+  - Management visit decade successful especially.
+- company: Austin-Gaines
+  currently_working: false
+  feature_comment: Beautiful available language service assume much class.
+  finished: '2023-05-27'
+  role: Lecturer, further education
   skills_used:
   - category: Communication
     skills:
-    - Persuasion
+    - Interpersonal Communication
     - Writing
-    - Public Speaking
+    - Negotiation
+  - category: Communication
+    skills:
     - Negotiation
     - Interpersonal Communication
+    - Public Speaking
+  - category: Technical
+    skills:
+    - JavaScript
+    - Docker
+    - Python
+  start: '2021-07-02'
+  successes:
+  - Rock current present plant task.
+  - Street total street.
+  - Agree finish however century.
+  - Little last statement human authority customer born follow.
+  - Computer nearly often condition maintain.
+- company: Gibbs LLC
+  currently_working: true
+  feature_comment: Newspaper indeed happy list generation kind this somebody. Fear
+    free after far bit tend.
+  finished: '2022-12-02'
+  role: Fish farm manager
+  skills_used:
+  - category: Management
+    skills:
+    - Agile Methodologies
+    - Project Management
+  start: '2019-11-18'
+  successes:
+  - Tell seat board fly.
+  - Attention production particularly red direction body.
+- company: Torres LLC
+  currently_working: false
+  feature_comment: Skin me debate behind.
+  finished: '2022-11-28'
+  role: Medical secretary
+  skills_used:
+  - category: Management
+    skills:
+    - Budgeting
+    - Agile Methodologies
+    - Strategic Planning
+    - Project Management
+    - Leadership
+  - category: Management
+    skills:
+    - Strategic Planning
+    - Project Management
+    - Budgeting
+  - category: Communication
+    skills:
+    - Persuasion
+    - Negotiation
+    - Public Speaking
+    - Interpersonal Communication
+    - Writing
+  - category: Technical
+    skills:
+    - Java
+    - SQL
+    - C++
+    - Machine Learning
+  start: '2019-11-01'
+  successes:
+  - Majority data education onto hot operation vote father.
+  - Check bar us suffer short race thank while.
+  - Ahead develop speak front imagine part whose learn.
+  - Relationship expert part single say money truth.
+- company: Rogers, Long and Kim
+  currently_working: true
+  feature_comment: Success management cultural throughout their likely safe.
+  finished: '2024-02-27'
+  role: Diagnostic radiographer
+  skills_used:
+  - category: Management
+    skills:
+    - Budgeting
+    - Leadership
+    - Strategic Planning
+  start: '2015-04-25'
+  successes:
+  - Civil ask scientist mention.
+  - Morning month and.
+  - Position beautiful dinner assume least begin ago.
+- company: Gomez-Garcia
+  currently_working: true
+  feature_comment: Detail him whom while ever central drug team. Market look response
+    easy.
+  finished: '2023-09-03'
+  role: Interpreter
+  skills_used:
+  - category: Communication
+    skills:
+    - Negotiation
+    - Public Speaking
+    - Interpersonal Communication
+    - Persuasion
+    - Writing
+  - category: Communication
+    skills:
+    - Public Speaking
+    - Interpersonal Communication
+  start: '2016-10-21'
+  successes:
+  - Must modern still program.
+  - Have participant improve authority she.
+  - Amount out none institution put quickly.
+  - Create foreign something church.
+  - By our girl ever statement develop.
+- company: Jones, Jackson and Williams
+  currently_working: true
+  feature_comment: Amount interest human blue white production various.
+  finished: '2022-12-02'
+  role: Engineer, building services
+  skills_used:
+  - category: Management
+    skills:
+    - Budgeting
+    - Strategic Planning
+    - Project Management
   - category: Analytical
     skills:
-    - Problem Solving
-    - Statistics
     - Data Analysis
+    - Research
+    - Statistics
+    - Critical Thinking
+  - category: Technical
+    skills:
+    - Kubernetes
+    - Machine Learning
+    - Python
+    - SQL
+    - AWS
+  - category: Communication
+    skills:
+    - Public Speaking
+    - Interpersonal Communication
+  start: '2017-07-24'
+  successes:
+  - Spend material finish man reveal.
+  - Expect long population all expect various clearly successful.
+- company: Ross and Sons
+  currently_working: true
+  feature_comment: Teach body artist indicate seek she behavior.
+  finished: '2023-09-11'
+  role: Airline pilot
+  skills_used:
+  - category: Communication
+    skills:
+    - Writing
+    - Public Speaking
+    - Interpersonal Communication
+    - Negotiation
   - category: Analytical
     skills:
     - Research
+    - Data Analysis
+    - Statistics
     - Critical Thinking
-    - Problem Solving
-  start: '2014-11-12'
+  start: '2017-06-01'
   successes:
-  - Rather within fast growth claim performance course memory.
-  - Wind magazine yes prepare less network.
-  - Anyone line thank control you.
-  - Find answer prepare eight surface certain.
-- company: Davis, Bell and Carrillo
+  - Force yourself stop authority nice much.
+  - Simple instead night minute form soldier science.
+- company: Gibson-Lucas
   currently_working: true
-  feature_comment: Power two character hard.
-  finished: '2024-01-10'
-  role: Therapist, nutritional
-  skills_used:
-  - category: Management
-    skills:
-    - Agile Methodologies
-    - Strategic Planning
-    - Budgeting
-    - Leadership
-    - Project Management
-  - category: Communication
-    skills:
-    - Negotiation
-    - Writing
-  - category: Management
-    skills:
-    - Agile Methodologies
-    - Strategic Planning
-    - Project Management
-  - category: Communication
-    skills:
-    - Persuasion
-    - Negotiation
-    - Public Speaking
-  start: '2017-10-29'
-  successes:
-  - Necessary quickly budget live its system visit.
-  - Especially increase newspaper paper true event finish.
-  - Develop act east charge big.
-  - Scientist account discover something crime take describe.
-  - South business would possible him soldier.
-- company: Rogers Group
-  currently_working: false
-  feature_comment: Piece join government movie increase threat. Guess hour join later
-    until.
-  finished: '2024-03-09'
+  feature_comment: Model size his office skin country same.
+  finished: '2023-01-03'
   role: Chartered loss adjuster
   skills_used:
   - category: Management
     skills:
-    - Agile Methodologies
-    - Strategic Planning
-    - Leadership
     - Project Management
     - Budgeting
-  - category: Communication
-    skills:
-    - Writing
-    - Persuasion
-  start: '2015-02-22'
-  successes:
-  - Subject size camera.
-  - Statement speak difficult management.
-  - Mean other scientist newspaper cause international cut.
-  - Recognize raise under his put source.
-- company: Edwards-Greene
-  currently_working: false
-  feature_comment: Painting bag friend common glass technology us who. Wish threat
-    newspaper president mother voice avoid.
-  finished: '2023-06-16'
-  role: Economist
-  skills_used:
-  - category: Management
-    skills:
-    - Budgeting
-    - Strategic Planning
-  - category: Management
-    skills:
-    - Leadership
     - Agile Methodologies
-    - Project Management
-    - Strategic Planning
-    - Budgeting
-  - category: Communication
-    skills:
-    - Writing
-    - Negotiation
-    - Persuasion
-    - Interpersonal Communication
-  - category: Analytical
-    skills:
-    - Research
-    - Problem Solving
-    - Statistics
-    - Critical Thinking
-    - Data Analysis
-  start: '2022-03-05'
+  start: '2018-01-25'
   successes:
-  - Whole full writer value blood their.
-  - Surface trip manager key recently poor four college.
-- company: Nelson-Hart
+  - Help total manage risk to whole.
+  - Many position ground along list.
+  - Institution door into main wish court see kid.
+- company: Wilson, Morton and Scott
   currently_working: false
-  feature_comment: Cultural also whole property short mouth relate easy.
-  finished: '2023-06-13'
-  role: Multimedia programmer
+  feature_comment: Skin can seat.
+  finished: '2024-03-11'
+  role: Industrial/product designer
   skills_used:
-  - category: Analytical
-    skills:
-    - Statistics
-    - Data Analysis
-    - Critical Thinking
   - category: Management
     skills:
     - Project Management
     - Agile Methodologies
-    - Budgeting
-  - category: Analytical
-    skills:
-    - Statistics
-    - Data Analysis
-    - Critical Thinking
-    - Problem Solving
   - category: Management
     skills:
-    - Agile Methodologies
-    - Leadership
     - Budgeting
-  start: '2019-08-20'
-  successes:
-  - Second what help environmental value sense.
-  - Win nature interview hot law forget national.
-  - So catch reduce choose moment tell everyone.
-- company: Ayers-Mcclure
-  currently_working: false
-  feature_comment: Accept which allow since. Reality environment rule reason point.
-  finished: '2023-11-09'
-  role: Translator
-  skills_used:
+    - Project Management
+    - Leadership
+    - Strategic Planning
   - category: Technical
     skills:
-    - AWS
-    - Machine Learning
-  - category: Communication
-    skills:
-    - Negotiation
-    - Public Speaking
-  - category: Technical
-    skills:
-    - SQL
     - Machine Learning
     - AWS
-    - Kubernetes
-    - Docker
-  start: '2017-07-17'
+  start: '2015-04-20'
   successes:
-  - Important sense book behavior trial contain politics.
-  - Employee somebody under rise north.
-  - Interesting much result respond trial.
-  - Actually west mean enter film program establish.
-  - Purpose outside investment song research.
-- company: Young-Gray
-  currently_working: true
-  feature_comment: Hit identify yes sport check door business.
-  finished: '2023-05-15'
-  role: Charity fundraiser
-  skills_used:
-  - category: Management
-    skills:
-    - Leadership
-    - Budgeting
-    - Project Management
-    - Strategic Planning
-  - category: Communication
-    skills:
-    - Public Speaking
-    - Negotiation
-  - category: Communication
-    skills:
-    - Writing
-    - Interpersonal Communication
-  - category: Technical
-    skills:
-    - AWS
-    - Docker
-    - JavaScript
-    - Machine Learning
-    - Kubernetes
-  start: '2014-09-16'
-  successes:
-  - Require manager suddenly.
-  - Music pretty around.
-  - Spring admit bring pick.
-  - Well author significant material state risk.
-  - Seem kind pressure middle scene three yourself.
-- company: Campbell-Pacheco
-  currently_working: false
-  feature_comment: Serve really build. Investment why imagine realize miss imagine
-    gun.
-  finished: '2023-06-05'
-  role: Data scientist
-  skills_used:
-  - category: Management
-    skills:
-    - Project Management
-    - Leadership
-    - Budgeting
-    - Agile Methodologies
-    - Strategic Planning
-  start: '2018-05-15'
-  successes:
-  - Prove might born minute.
-  - Structure mean care table.
-- company: Obrien-Monroe
-  currently_working: true
-  feature_comment: Make blue voice traditional property state. Operation fire entire
-    collection easy common research.
-  finished: '2022-09-27'
-  role: Surveyor, building
-  skills_used:
-  - category: Management
-    skills:
-    - Leadership
-    - Agile Methodologies
-  start: '2019-12-16'
-  successes:
-  - Resource voice activity power.
-  - Size onto whole arm natural value dinner.
-  - Claim exist few bad process language magazine.
-  - Computer continue give cultural job.
-  - Hard loss change break stock trip.
-- company: Richardson, Watson and Montoya
-  currently_working: false
-  feature_comment: Someone field foreign go possible style participant. Near dark
-    avoid unit.
-  finished: '2023-08-01'
-  role: Medical secretary
-  skills_used:
-  - category: Technical
-    skills:
-    - C++
-    - Java
-    - Kubernetes
-    - SQL
-  - category: Analytical
-    skills:
-    - Statistics
-    - Research
-    - Data Analysis
-  start: '2018-01-28'
-  successes:
-  - Possible community early process four.
-  - Receive second bill suggest.
-  - Guy lead partner production business wear discussion.
-  - Ground concern eye.
+  - Painting especially front.
+  - Allow include public kid college opportunity leader.
 main_data:
-  address: '56979 Davenport Coves
+  address: '5333 Boone Green
 
-    Solomonview, PA 95076'
-  email: kwaller@example.net
+    Johnsonfurt, VI 36090'
+  email: dillon11@example.com
   links:
   - name: github
     order: 5
     type: GitHub
-    url: github.com/barbara84
+    url: github.com/michaelpope
   - name: linkedin
     order: 2
     type: LinkedIn
-    url: linkedin.com/in/ohanson
-  location: Donnachester, Illinois
-  name: Andrea Alvarez
-  phone: +1-681-722-2382x3014
+    url: linkedin.com/in/ernest77
+  location: Peterbury, Delaware
+  name: Ashley Stephens
+  phone: 522.925.1235
   picture: assets/avatar.png
-  position: Data Analyst
+  position: Financial Analyst
 passions:
-- Leg project executive bag every board. Decide visit see but agency. However their
-  recent last focus.
-- Move analysis from democratic. Whom enough policy outside wife least radio. Central
-  threat similar size. Movie another institution evidence up analysis position manage.
+- Professional country they already heart PM information. And group dark evidence
+  believe. Water although field several.
+- Decade better than reduce find.
+references:
+- email: uboone@example.com
+  name: Jasmin Williams
+  phone: 001-267-530-1912x2018
+  relationship: Parent
+- email: darren80@example.com
+  name: Charles Mercado
+  phone: 980.934.7787
+  relationship: Partner
+- email: emily48@example.org
+  name: Ms. Emily Weiss
+  phone: 001-422-426-3783x76423
+  relationship: Husband
+screener:
+  disability: true
+  over 18: false
+  us citizen: true
+  veteran: false
+  willing to travel: true
 skills:
 - category: Technical
   skills:
-  - AWS
+  - C++
   - Python
+  - Java
+  - Docker
+  - JavaScript
 - category: Management
   skills:
-  - Budgeting
   - Project Management
-  - Strategic Planning
   - Leadership
-  - Agile Methodologies
+  - Strategic Planning
 - category: Communication
   skills:
-  - Negotiation
-  - Interpersonal Communication
-  - Writing
-  - Persuasion
   - Public Speaking
+  - Persuasion
+  - Interpersonal Communication
 - category: Analytical
   skills:
   - Data Analysis
   - Statistics
-  - Critical Thinking
 strengths:
-- Across lose American from war fear. Page already others subject service nothing
-  stop.
-summary: Change wind yeah. News usually ago so action produce once. College feeling
-  address today. Minute by success subject.
+- Student blue ok sense financial opportunity. Much today wonder who front action.
+  Fine sure economy event. Up both option.
+summary: Mother tell more industry whatever parent town. For task arrive realize.
+  Role any best against what. Player test individual until vote stand.

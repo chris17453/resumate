@@ -5,6 +5,22 @@ import random
 
 fake = Faker()
 
+# Define a list of possible relationship types
+
+# Function to generate a random relationship type
+def get_relationship_type():
+    relationship_types = [
+        "Friend",
+        "Coworker",
+        "Parent",
+        "Wife",
+        "Husband",
+        "Sibling",
+        "Cousin",
+        "Partner"
+    ]
+    return random.choice(relationship_types)
+
 def generate_skills(category):
     skills = {
         'Technical': ['Python', 'Java', 'C++', 'JavaScript', 'SQL', 'AWS', 'Docker', 'Kubernetes', 'Machine Learning'],
@@ -76,6 +92,31 @@ def generate_resume_data(num_experiences,num_achievements=5,num_strengths=1,num_
            'course':  fake.catch_phrase() + " Course",
            'date':fake.date(),
         },
+        'screener': {
+            'veteran': fake.boolean(),
+            'disability': fake.boolean(),
+            'us citizen': fake.boolean(),
+            'over 18': fake.boolean(),
+            'willing to travel': fake.boolean(),
+        },
+        'references':[
+            {
+                'name':fake.name(),
+                'relationship':  get_relationship_type(),
+                'email': fake.email(),
+                'phone': fake.phone_number(),
+            },            {
+                'name':fake.name(),
+                'relationship':  get_relationship_type(),
+                'email': fake.email(),
+                'phone': fake.phone_number(),
+            },            {
+                'name':fake.name(),
+                'relationship':  get_relationship_type(),
+                'email': fake.email(),
+                'phone': fake.phone_number(),
+            },
+        ],
         'strengths':  [fake.paragraph(nb_sentences=3) for _ in range(num_strengths)],
         'passions': [fake.paragraph(nb_sentences=3) for _ in range(num_passions)],
         'experiences': [generate_experience() for _ in range(num_experiences)],
