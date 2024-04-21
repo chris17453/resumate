@@ -3,12 +3,13 @@ import argparse
 from .io import load_resume_from_yaml,save_resume_to_yaml,create_resume_template
 from .pdf import generate_pdf
 from .generator import generated_resume
+from .template import generate_template
 
 
 
 def main():
     parser = argparse.ArgumentParser(description="Resume YAML File Management")
-    parser.add_argument('action', choices=['template', 'load', 'save', 'generate_pdf', 'generate_fake','extract'], help="Action to perform: create a new template, load data, save data, generate PDF, or generate fake resume data, extract pdf data")
+    parser.add_argument('action', choices=['template', 'load', 'save', 'generate_pdf', 'generate_fake','extract','new_style'], help="Action to perform: create a new template, load data, save data, generate PDF, or generate fake resume data, extract pdf data, amke a new pdf template")
     parser.add_argument('file', help="Path to the YAML file")
     parser.add_argument('dir', nargs='?', default=None, help="Directory to store resume files")
 
@@ -22,8 +23,10 @@ def main():
 
     else: 
         os.makedirs(args.dir)
-
-    if args.action == 'template':
+    if args.action == 'new_style':
+        generate_template(args.file)
+        print(f"Created a new template style at {args.file}")
+    elif args.action == 'template':
         create_resume_template(args.file)
         print(f"Created a new resume template at {args.file}")
     elif args.action == 'load':

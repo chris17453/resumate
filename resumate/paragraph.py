@@ -30,7 +30,8 @@ class ParagraphD(Paragraph):
         #print(y,line_height)
 
 class LineDrawer(Flowable):
-    def __init__(self, height=0, color=None,frame=None):
+    def __init__(self, height=0, color=colors.black,frame=None):
+
         super().__init__()
         self.width = 1
         self.height = height
@@ -61,7 +62,7 @@ class SpacerD(Flowable):
     def draw(self):
         frame_y_position = self._frame._y if self._frame else 0
         line_height = frame_y_position  - self.height  
-        capture_details(self,  0, line_height)
+        capture_details(self,  self._frame.width, line_height)
 
     def wrap(self, availWidth, availHeight):
         return self.width, self.height

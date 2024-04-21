@@ -11,8 +11,7 @@ def get_certificates(count):
     certs = []
     for _ in range(count):
         certificate = {
-            'school': fake.company() + " School",
-            'course': fake.catch_phrase() + " Course",
+            'name': fake.catch_phrase() + " Course",
             'date': fake.date()
         }
         certs.append(certificate)
@@ -53,7 +52,7 @@ def generate_experience():
         'role': fake.job(),
         'company': fake.company(),
         'start': fake.date_between(start_date='-10y', end_date='-2y').isoformat(),
-        'finished': fake.date_between(start_date='-2y', end_date='today').isoformat(),
+        'end': fake.date_between(start_date='-2y', end_date='today').isoformat(),
         'currently_working': fake.boolean(chance_of_getting_true=25),
         'feature_comment': fake.paragraph(nb_sentences=2),
         'successes': [fake.sentence() for _ in range(random.randint(2, 5))],
@@ -62,49 +61,40 @@ def generate_experience():
     }
 
 
-def generate_links():
-    return [
-        {
-            'type': 'GitHub',
-            'url': 'github.com/' + fake.user_name(),
-            'name': 'github',
-            'order': random.randint(1, 5)
-        },
-        {
-            'type': 'LinkedIn',
-            'url': 'linkedin.com/in/' + fake.user_name(),
-            'name': 'linkedin',
-            'order': random.randint(1, 5)
-        }
-    ]
 def generate_resume_data(num_experiences,num_achievements=5,num_strengths=1,num_passions=2,certificate_count=2):
     return {
-        'main_data': {
+        'header': {
             'name': fake.name(),
             'address': fake.address(),
             'location': fake.city()+", "+fake.state(),
             'phone': fake.phone_number(),
             'email': fake.email(),
             'position':generate_position(),
-            'links': generate_links(),
+            'github': 'github.com/in/' + fake.user_name(),
+            'linkedin': 'linkedin.com/in/' + fake.user_name(),
             'picture': 'assets/avatar.png'
         },
-        'summary': fake.paragraph(nb_sentences=5),
+        'summary': {'text':fake.paragraph(nb_sentences=5)},
         'cover_page': fake.paragraph(nb_sentences=15),
-        'education': {
+        'education': [{
            'school': fake.company() + " School",
            'course':  fake.catch_phrase() + " Course",
-           'from':fake.date(),
-           'to':fake.date(),
-        },
+           'start':fake.date(),
+           'end':fake.date(),
+        }],
 
         'certificates': get_certificates(certificate_count),
         'screener': {
             'veteran': fake.boolean(),
             'disability': fake.boolean(),
-            'us citizen': fake.boolean(),
-            'over 18': fake.boolean(),
-            'willing to travel': fake.boolean(),
+            'us_citizen': fake.boolean(),
+            'over_18': fake.boolean(),
+            'willing_to_travel': fake.boolean(),
+            'remote':fake.boolean(),
+            'hybrid':fake.boolean(),
+            'office':fake.boolean(),
+            'start_date':fake.date(),
+
         },
         'references':[
             {

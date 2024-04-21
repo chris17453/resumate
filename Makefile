@@ -7,7 +7,7 @@ UUID="TEST"
 RESUME_DIR=$(DATA_DIR)/$(UUID)
 YAML_FILE=$(RESUME_DIR)/resume.yaml
 PDF_FILE=$(RESUME_DIR)/resume.pdf
-TEMPLATE_PDF_FILE=samples/Template V1 -Resume.pdf
+TEMPLATE_PDF_FILE=template/resume-1.yaml
 
 
 .PHONY: all clean install template load save generate_pdf generate_fake_resume generate_yaml_and_pdf
@@ -16,6 +16,9 @@ all: $(PDF_FILE)
 
 template:
 	$(PYTHON) -m resumate.cli template $(YAML_FILE)
+
+new_style:
+	$(PYTHON) -m resumate.cli new_style $(TEMPLATE_PDF_FILE)
 
 load:
 	$(PYTHON) -m resumate.cli load $(YAML_FILE)

@@ -3,7 +3,7 @@ from .shapes import shape_circle,shape_rectangle, shape_picture
 from reportlab.lib.utils import ImageReader
 from .paragraph import LineDrawer, ParagraphD
 
-
+from .section import add_items
 
 def draw_shapes(metadata,canvas):
     shapes=metadata['objects']
@@ -51,23 +51,8 @@ def add_header(canvas, doc, metadata, styles):
     
 
     # List of paragraphs (Flowable objects) for the header
-    story = [
-        Paragraph(f"{resume['main_data']['name']}", styles['Header_Title']),
-        Paragraph(f"{resume['main_data']['position']}", styles['Subtitle']),
-        #Paragraph(f"<b>Address:</b> {resume['main_data']['address']}", styles['HeaderText']),
-        Paragraph(f"<b>Phone:</b> {resume['main_data']['phone']}", styles['Header_Text']),
-        Paragraph(f"<b>Email:</b> {resume['main_data']['email']}", styles['Header_Text']),
-        Paragraph(f"<b>Location:</b> {resume['main_data']['location']}", styles['Header_Text']),
-    ]
-    # Extracting links and creating hyperlink strings
-    link_strings = [
-        f'<a href="{link["url"]}">{link["name"].capitalize()}</a>' 
-        for link in sorted(resume['main_data'].get('links', []), key=lambda x: x.get('order', 0))
-    ]
-
-    # Joining the link strings into a single string
-    links_combined = ' '.join(link_strings)
-    story.append(Paragraph(links_combined, styles['Header_Text']))
+    story=add_items(metadata['template']['global'],metadata['template']['header'],metadata['resume'],styles)
+    
     # Calculate available width and starting height within the frame
     available_width = header_frame.width
     current_y = header_frame._y2
@@ -81,7 +66,7 @@ def add_header(canvas, doc, metadata, styles):
             current_y -= flowable_height # Move up the start position for the next flowable
         flowable.drawOn(canvas, header_frame._x1, current_y)
 
-    profile_image(metadata['objects']['picture'],resume['main_data']['picture'],canvas)    
+    profile_image(metadata['objects']['picture'],resume['header']['picture'],canvas)    
 
 def profile_image(object,image_path,c):
     image = ImageReader(image_path)
@@ -137,8 +122,8 @@ def add_footer(canvas,doc,metadata, styles):
 
     # List of paragraphs (Flowable objects) for the header
     story = [
-        LineDrawer(5,styles['Heading2'].textColor,frame),
-        Paragraph(f"Page {doc.page} of {metadata['pages']} ", styles['Footer']),
+        LineDrawer(5,styles['footer_Heading1'].textColor,frame),
+        Paragraph(f"Page {doc.page} of {metadata['pages']} ", styles['footer_Text']),
 
     ]
     #print(metadata['pages'])
