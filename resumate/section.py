@@ -1,8 +1,10 @@
 from datetime import datetime
-from .paragraph import ParagraphD,LineDrawer,SpacerD
+from .paragraph import ParagraphD,LineDrawer,SpacerD, SVGRRowD,SVGFlowableD,SingleWordD
 from reportlab.platypus import KeepTogether, Paragraph, Spacer
+from reportlab.lib.units import inch
 import copy 
 
+from .common import _eval_with_units
 from .common import ucfirst, get_style
 
 def add_section(base, section, data,styles):
@@ -82,8 +84,6 @@ def add_item(base,section,data,styles,name):
     if name=='header' or name=='footer':
          object_type=Paragraph
 
-
-
     data_copy=convert_data(data)
     for item in section['format']:
         #print(item)
@@ -100,35 +100,21 @@ def add_item(base,section,data,styles,name):
                 pdf_object.append(object_type(data_copy, style,  bulletText=base['list']['bullet_style']))
             else:
                 pdf_object.append(object_type(item['data'].format(**data_copy), style,  bulletText=base['list']['bullet_style']))
+        elif item['type'] == "svg":
+            pdf_object.append(SVGFlowableD(item['data'],_eval_with_units(item['width']),_eval_with_units(item['height'])))
+        elif item['type'] == "svgrow":
+             svg_array=[]
+             items=item['data']
+             svg_size=_eval_with_units(item['svg_size'])
+             
+             for item in items:
+                  svg_array.extend([SVGFlowableD(item,svg_size,svg_size),
+                            SpacerD(5,5,style),
+                            SingleWordD(item,style),
+                            SpacerD(10,5,style)])                    
+             svgRow=SVGRRowD(svg_array)
+             pdf_object.append(svgRow)
 
     return pdf_object
 
 
-def add_item3(base, section, data, styles, name):
-    pdf_object = []
-
-    # Check if the data is a dictionary (nested object)
-    if isinstance(data, dict):
-        # Iterate over each key-value pair in the dictionary
-        for key, value in data.items():
-            # Recursively add each key-value pair as an item
-            pdf_object.extend(add_item(base, section, {key: value}, styles, name))
-    # Check if the data is a list (nested list)
-    elif isinstance(data, list):
-        # Iterate over each item in the list
-        for item in data:
-            # Recursively add each item in the list
-            pdf_object.extend(add_item(base, section, item, styles, name))
-    else:
-        # If the data is a string or other primitive type, add it as a single item
-        for item_format in section['format']:
-            style = get_style(name, item_format['style'], styles)
-            if item_format['type'] == "string":
-                pdf_object.append(ParagraphD(str(data), style))
-            elif item_format['type'] == "format":
-                pdf_object.append(ParagraphD(str(item_format['data'].format(**{name: data})), style))
-            elif item_format['type'] == "list":
-                pdf_object.append(ParagraphD(str(item_format['data'].format(**{name: data})), style,
-                                             bulletText=base['list']['bullet_style']))
-
-    return pdf_object

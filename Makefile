@@ -30,7 +30,7 @@ generate_pdf:
 	$(PYTHON) -m resumate.cli generate_pdf $(YAML_FILE)
 
 
-generate_fake:
+generate_fake:new_style
 	echo $(UUID)
 	echo $(UUID)
 	echo $(UUID)

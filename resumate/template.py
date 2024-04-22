@@ -95,7 +95,11 @@ def generate_template(template_file):
             {'id': 'header_bg_circle', 'type': 'circle', 'left': 'page_width - 1.5 inch', 'top': 'page_height-1 inch', 'diameter': '.75 inch', 'background-color': '#222222'}]
     metadata['picture']= {'id': 'picture', 'left': 'header.left+header.width-1.95 inch', 'top': 'header.top + .10 inch', 'max_width': '1.4 inch', 'max_height': '1.4 inch', 'mask': 'circle', 'background-color': '#000000'}
     
-    column_wide['summary']={'order':1,'keep_together': True, 'type': 'text', 'data': 'text', 'format': [{'data': 'text', 'type': 'string', 'style': 'Heading2'}]}
+    column_wide['summary']={'order':1,'keep_together': True, 'type': 'text', 'data': 'text', 
+                            'format': [
+                                {'data': 'text', 'type': 'string', 'style': 'Heading2'},
+                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws'], 'type': 'svgrow', 'style': 'Heading2','svg_size':'.25 inch'},
+                                ]}
     column_wide['experiences'] = {'order':2,'keep_together': False, 'type': 'array', 'data': ['role', 'company', 'start', 'end', 'curently_working', 'feature_comment', 'success', 'skills_used'], 
                                   'format': [{'data': 'role', 'type': 'string', 'style': 'Heading2'}, 
                                              {'data': '{start:%b %Y} - {end:%b %Y}', 'type': 'format', 'style': 'Heading2_Right'}, 
@@ -113,12 +117,14 @@ def generate_template(template_file):
 
                                     {'data': 'course', 'type': 'string', 'style': 'Heading2'}, 
                                     ]}
+    
+
     column_wide['certificates'] = {'order':4,'keep_together': True, 'type': 'array', 'data': ['name', 'date'], 'format': [ {'data': '{date:%b %Y}', 'type': 'format', 'style': 'Heading2_Right'},{'data': 'name', 'type': 'string', 'style': 'Heading2'}]}
     column_wide['references']= {'order':5,'keep_together': True, 'type': 'array', 'data': [{'reference': ['name', 'phone', 'email', 'relationship']}], 'format': [{'data': '{name},{relationship}', 'type': 'format', 'style': 'Heading2'}, {'data': 'phone', 'type': 'string', 'style': 'Text'}, {'data': 'email', 'type': 'string', 'style': 'Text'}]}
     column_small['screener']= {'order':1,'keep_together': True, 'type': 'object', 'data': ['veteran', 'disability', 'us_citizen', 'over_18', 'willing_to_travel', 'remote', 'hybrid', 'office', 'start_date'], 'format': [{'data': 'Veteran: {veteran} ', 'type': 'format', 'style': 'Text'}, {'data': 'Disabled: {disability} ', 'type': 'format', 'style': 'Text'}, {'data': 'US Citizen: {us_citizen}', 'type': 'format', 'style': 'Text'}, {'data': 'Over 18: {over_18}', 'type': 'format', 'style': 'Text'}, {'data': 'Travel: {willing_to_travel}', 'type': 'format', 'style': 'Text'}, {'data': 'Remote: {remote}', 'type': 'format', 'style': 'Text'}, {'data': 'Hybrid: {hybrid}', 'type': 'format', 'style': 'Text'}, {'data': 'Office: {office}', 'type': 'format', 'style': 'Text'}, {'data': 'Start Date: {start_date}', 'type': 'format', 'style': 'Text'}]}
     column_small['strengths']= {'order':2,'keep_together': True, 'type': 'array', 'data': ['strengths'], 'format': [{'data': 'strengths', 'type': 'list', 'style': 'Text'}]}
     column_small['achievements']= {'order':3,'keep_together': True, 'type': 'array', 'data': ['achievements'], 'format': [{'data': 'achievements', 'type': 'list', 'style': 'Text'}]}
-    column_small['skills'] ={'order':4,'keep_together': True, 'type': 'array', 'data': ['skills'], 'format': [{'data': 'achievements', 'type': 'list', 'style': 'Text'}]}
+    column_small['skills'] ={'order':4,'keep_together': True, 'type': 'array', 'data': ['skills'], 'format': [{'data': 'skills', 'type': 'list', 'style': 'Text'}]}
     column_small['passions'] ={'order':5,'keep_together': True, 'type': 'array', 'data': ['passions'], 'format': [{'data': 'passions', 'type': 'list', 'style': 'Text'} ]}
     
 

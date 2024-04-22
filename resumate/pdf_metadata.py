@@ -6,6 +6,8 @@ from functools import partial
 import yaml
 from .header import header_footer
 from .styles import create_styles
+from .common import _eval_with_units
+
 
 from .shapes import shape_circle,shape_rectangle, shape_picture
 
@@ -119,21 +121,3 @@ def create_combined_template(metadata):
     
     return page_template
 
-def _eval_with_units(expression, frames):
-    # Define units and dimensions
-    page_width, page_height = letter
-
-    # Create a local dictionary to include frames and global measurements
-    frames['inch']= inch
-    frames['page_width']= page_width
-    frames['page_height']= page_height
-    
-    if not isinstance(expression, int):
-        #print (expression)
-        expression  = expression.replace("inch", "*inch")
-        result = eval(expression  , {}, frames)
-            
-        #print (expression,":",result)
-        return result
-    # if its alreadyu calculated/int
-    return expression
