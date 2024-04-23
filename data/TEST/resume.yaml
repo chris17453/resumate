@@ -1,328 +1,340 @@
 achievements:
-- Page pressure someone have hospital body. Remember common space represent recent.
-- Number life however. Forget science song still.
-- Bring prove industry show lose together technology practice. Last choose near five
-  southern fight mind. Politics investment involve risk.
-- Task manager along bad. Including each page time grow president knowledge.
-- Put local back their technology. Example but expert affect only skin. Degree result
-  study could song ten lot everything.
+- Record culture both perhaps home money. Use manage time company almost.
+- Now set politics look. Also any their election indicate leader note factor. Task
+  trip various leave whose yourself.
+- Suddenly defense much two receive government material range.
+- Although thousand view act wait.
+- Decision identify month traditional book manager. Foreign play market ok.
 certificates:
-- date: '2014-05-14'
-  name: Open-source responsive moratorium Course
-- date: '2019-09-15'
-  name: Business-focused optimal moratorium Course
+- date: '1987-09-18'
+  name: Enhanced content-based protocol Course
+- date: '2023-02-28'
+  name: Reactive demand-driven algorithm Course
 cover_page: false
 education:
-- course: Innovative stable benchmark Course
-  end: '2008-05-01'
-  school: Robertson-Farrell School
-  start: '2016-05-22'
+- course: Customer-focused national moratorium Course
+  end: '1974-06-11'
+  school: Williams-Hughes School
+  start: '2015-01-16'
 experiences:
-- company: Vasquez, Baldwin and Parker
+- company: Berry, Perez and Benton
   currently_working: false
-  end: '2023-03-26'
-  feature_comment: Drop someone sport quality usually best fear.
-  role: Meteorologist
+  end: '2024-03-25'
+  feature_comment: White common much central dark say inside exactly. Reveal family
+    quality method field.
+  role: Airline pilot
   skills_used:
-  - category: Analytical
-    skills:
-    - Critical Thinking
-    - Problem Solving
-    - Statistics
-  - category: Management
-    skills:
-    - Leadership
-    - Strategic Planning
-  - category: Management
-    skills:
-    - Strategic Planning
-    - Agile Methodologies
-    - Budgeting
-    - Project Management
-    - Leadership
-  start: '2016-11-11'
-  successes:
-  - Least several guess voice key available kitchen month.
-  - Mission message adult project quality may score idea.
-- company: Castillo, Bishop and Jacobs
-  currently_working: true
-  end: '2023-05-02'
-  feature_comment: Response politics consider remember worker.
-  role: Product designer
-  skills_used:
-  - category: Management
-    skills:
-    - Project Management
-    - Budgeting
-  start: '2019-03-20'
-  successes:
-  - Participant who soldier training against air.
-  - Couple memory size have such side.
-  - Something property news cell court.
-  - Under price information across must.
-- company: Chapman, Hardin and Norton
-  currently_working: false
-  end: '2024-02-09'
-  feature_comment: Protect foreign become young. Just sea management why.
-  role: IT trainer
-  skills_used:
-  - category: Management
-    skills:
-    - Leadership
-    - Agile Methodologies
-    - Budgeting
-    - Strategic Planning
-  start: '2020-10-16'
-  successes:
-  - Daughter machine voice plant discover check.
-  - Study office general shoulder.
-- company: Smith and Sons
-  currently_working: false
-  end: '2022-11-22'
-  feature_comment: Claim organization assume mind move.
-  role: Psychologist, sport and exercise
-  skills_used:
-  - category: Management
-    skills:
-    - Budgeting
-    - Agile Methodologies
-  - category: Communication
-    skills:
-    - Public Speaking
-    - Writing
-    - Interpersonal Communication
   - category: Technical
     skills:
-    - C++
-    - SQL
+    - Kubernetes
     - Java
-  start: '2018-04-18'
-  successes:
-  - There college man top interest interest like.
-  - Enjoy whether family away cell dog.
-  - Expect require prepare matter receive meeting page provide.
-- company: Perez-Ayala
-  currently_working: false
-  end: '2023-02-07'
-  feature_comment: Character arm friend bag. Civil great study fill a.
-  role: Pilot, airline
-  skills_used:
-  - category: Analytical
+  - category: Management
     skills:
-    - Problem Solving
-    - Statistics
-    - Critical Thinking
+    - Budgeting
+    - Leadership
+    - Agile Methodologies
+    - Project Management
   - category: Analytical
     skills:
     - Research
     - Problem Solving
+    - Statistics
+    - Data Analysis
+  - category: Communication
+    skills:
+    - Writing
+    - Public Speaking
+  start: '2021-08-26'
+  successes:
+  - Memory see property carry.
+  - Deal yet war floor Democrat investment.
+  - Couple manage minute red resource.
+  - Color weight eye whatever wish blood entire.
+  - Might build product they.
+- company: Quinn-Cook
+  currently_working: false
+  end: '2022-05-05'
+  feature_comment: Mrs former ago economy truth.
+  role: Research scientist (physical sciences)
+  skills_used:
+  - category: Communication
+    skills:
+    - Persuasion
+    - Negotiation
+  start: '2018-07-09'
+  successes:
+  - Republican very century thousand attorney study.
+  - Small realize protect green.
+  - Care drug return gas federal contain.
+  - Grow if treatment ability test day employee.
+  - Throughout painting decide know Republican.
+- company: Mathews PLC
+  currently_working: false
+  end: '2022-12-29'
+  feature_comment: Home teacher role west.
+  role: Dietitian
+  skills_used:
+  - category: Technical
+    skills:
+    - SQL
+    - Python
+  - category: Management
+    skills:
+    - Strategic Planning
+    - Project Management
+    - Leadership
+    - Agile Methodologies
+  - category: Management
+    skills:
+    - Leadership
+    - Agile Methodologies
+    - Project Management
+    - Budgeting
+    - Strategic Planning
+  - category: Analytical
+    skills:
+    - Research
+    - Problem Solving
+    - Statistics
     - Critical Thinking
+    - Data Analysis
+  start: '2020-04-09'
+  successes:
+  - Approach network itself.
+  - Human difficult energy allow bring six though.
+  - Different I professional this capital century.
+- company: Adams Group
+  currently_working: false
+  end: '2023-12-23'
+  feature_comment: Right size really shake body better. Professor feel game everything
+    bring new hospital.
+  role: Meteorologist
+  skills_used:
   - category: Communication
     skills:
     - Public Speaking
     - Persuasion
+    - Interpersonal Communication
+    - Writing
+    - Negotiation
   - category: Management
     skills:
     - Strategic Planning
     - Leadership
-    - Agile Methodologies
     - Budgeting
-  start: '2019-06-11'
-  successes:
-  - New become risk five.
-  - Central financial stuff manager discover successful.
-  - Tell member responsibility model month raise much.
-  - Brother task how middle under.
-- company: Olson-Smith
-  currently_working: false
-  end: '2022-10-12'
-  feature_comment: Knowledge the true television.
-  role: Site engineer
-  skills_used:
   - category: Analytical
     skills:
     - Data Analysis
     - Research
-    - Critical Thinking
+  start: '2020-10-20'
+  successes:
+  - It writer international far.
+  - Before attorney camera experience purpose audience nearly.
+  - Pretty off where true.
+- company: Wu-Jenkins
+  currently_working: false
+  end: '2023-10-05'
+  feature_comment: Seek start will guy food student.
+  role: Quantity surveyor
+  skills_used:
   - category: Communication
     skills:
-    - Interpersonal Communication
-    - Writing
     - Public Speaking
+    - Writing
     - Negotiation
   - category: Analytical
     skills:
-    - Statistics
-    - Problem Solving
-    - Data Analysis
     - Research
+    - Data Analysis
+    - Problem Solving
     - Critical Thinking
-  start: '2017-12-12'
+  start: '2022-03-11'
   successes:
-  - Some executive region push.
-  - Guy ground east get scientist.
-  - List wait foreign job including word.
-- company: Doyle LLC
-  currently_working: false
-  end: '2023-12-11'
-  feature_comment: Others however amount glass true believe. Training trial federal
-    total amount deal can.
-  role: Product/process development scientist
+  - Professional during easy level police message.
+  - Anyone tough central quite Mr thousand environmental.
+- company: Jackson Group
+  currently_working: true
+  end: '2022-11-07'
+  feature_comment: Time decide development part. Nearly opportunity should near understand.
+  role: Commercial/residential surveyor
   skills_used:
+  - category: Communication
+    skills:
+    - Persuasion
+    - Public Speaking
+    - Writing
   - category: Technical
     skills:
     - SQL
-    - Docker
-    - C++
+    - Java
+    - Machine Learning
     - Kubernetes
+    - Docker
+  - category: Technical
+    skills:
+    - Python
+    - Docker
+    - Machine Learning
+    - JavaScript
+  start: '2018-04-11'
+  successes:
+  - Attack form conference.
+  - Her five notice paper red large.
+  - Physical good a trial themselves budget.
+- company: Tran-Zamora
+  currently_working: false
+  end: '2024-03-09'
+  feature_comment: Sport national one conference after. One contain call foreign their
+    population free.
+  role: Landscape architect
+  skills_used:
   - category: Analytical
     skills:
-    - Data Analysis
-    - Statistics
-  - category: Analytical
-    skills:
-    - Statistics
     - Problem Solving
     - Data Analysis
-    - Critical Thinking
-    - Research
-  start: '2016-11-16'
+  start: '2017-06-03'
   successes:
-  - Color PM husband remember can after.
-  - Just instead threat turn tell even this.
-  - Contain property significant.
-- company: Morton-Flynn
+  - Senior continue animal scientist traditional college clearly.
+  - Before north fall age hospital indeed floor.
+  - Federal always treat foreign program.
+  - Tax operation along traditional bring.
+- company: Adkins-Morales
   currently_working: false
-  end: '2022-06-12'
-  feature_comment: Particular enough modern everyone artist.
-  role: Ceramics designer
+  end: '2022-05-15'
+  feature_comment: Me behavior into.
+  role: Designer, furniture
   skills_used:
-  - category: Management
+  - category: Communication
     skills:
-    - Budgeting
-    - Leadership
-    - Project Management
-    - Strategic Planning
+    - Writing
+    - Negotiation
+    - Interpersonal Communication
+    - Persuasion
+  start: '2019-06-19'
+  successes:
+  - Color eight score wish but.
+  - Challenge fish energy feel energy edge.
+  - Former radio become tree eight edge office.
+- company: Curry, Nelson and Hamilton
+  currently_working: false
+  end: '2022-11-11'
+  feature_comment: Account east use push summer piece. Whose thousand almost.
+  role: Pensions consultant
+  skills_used:
+  - category: Communication
+    skills:
+    - Interpersonal Communication
+    - Negotiation
+    - Writing
+    - Persuasion
+    - Public Speaking
+  - category: Communication
+    skills:
+    - Negotiation
+    - Public Speaking
+    - Persuasion
+    - Interpersonal Communication
+  - category: Communication
+    skills:
+    - Public Speaking
+    - Interpersonal Communication
+    - Persuasion
+    - Negotiation
+    - Writing
+  start: '2018-09-02'
+  successes:
+  - Politics hear weight when part local.
+  - Player establish worry police.
+  - Father clear particular star water world.
+  - Early move enough score network.
+- company: Davis, Graham and Turner
+  currently_working: false
+  end: '2023-06-19'
+  feature_comment: Science firm there treat particularly.
+  role: Glass blower/designer
+  skills_used:
+  - category: Analytical
+    skills:
+    - Research
+    - Problem Solving
+  - category: Technical
+    skills:
+    - Docker
+    - AWS
+    - Python
   - category: Management
     skills:
     - Agile Methodologies
     - Leadership
-  start: '2016-05-04'
+    - Project Management
+    - Strategic Planning
+  start: '2021-05-18'
   successes:
-  - Wish crime society hit Mrs.
-  - Ahead wrong beyond difference me rich us.
-  - Physical call reduce help growth rise.
-  - Candidate really sometimes true father particularly next.
-  - Power chance system across floor green.
-- company: Singh-Branch
-  currently_working: false
-  end: '2023-01-03'
-  feature_comment: Glass type top they.
-  role: Product/process development scientist
-  skills_used:
-  - category: Analytical
-    skills:
-    - Statistics
-    - Research
-    - Data Analysis
-  - category: Communication
-    skills:
-    - Interpersonal Communication
-    - Writing
-    - Public Speaking
-  start: '2021-04-24'
-  successes:
-  - Health degree similar structure traditional.
-  - First social city in sure including message.
-  - Seem her population next big.
-  - Bill mention young best information news energy.
-- company: Bullock Group
-  currently_working: false
-  end: '2023-10-22'
-  feature_comment: Teach identify travel school issue whatever pull. Choice send movement
-    ahead.
-  role: Production designer, theatre/television/film
-  skills_used:
-  - category: Technical
-    skills:
-    - SQL
-    - AWS
-    - Python
-  start: '2016-09-01'
-  successes:
-  - Physical process explain no official study role.
-  - Very court recognize Congress affect identify hard.
-  - Wish PM your message produce.
+  - Soon worry prepare standard.
+  - Imagine data need rather activity less practice.
+  - Over sense myself any speech also.
+  - Painting military total owner education ready.
 header:
-  address: '7541 Delgado Meadow
+  address: '5919 Kristin Ranch Apt. 035
 
-    South Emmamouth, CO 40875'
-  email: collinkelly@example.net
-  github: github.com/in/stephen76
-  linkedin: linkedin.com/in/troymedina
-  location: Davidchester, Minnesota
-  name: Deanna Duncan
-  phone: 410.664.7988x88846
+    Jacobfurt, IL 47300'
+  email: heidibailey@example.com
+  github: github.com/in/charlesdavis
+  linkedin: linkedin.com/in/carmenmays
+  location: Leeport, North Dakota
+  name: Tonya White
+  phone: 348.316.6703x953
   picture: assets/avatar.png
-  position: Project Manager
+  position: Data Analyst
 passions:
-- Fine control ahead base movement. Authority know station executive. See seat simple
-  deep.
-- Soldier kind culture structure perhaps important. Theory author full address impact
-  big.
+- Story after believe miss. But score hand. Owner number college firm deep.
+- Research research star exist four. Effect young energy project model guy pick.
 references:
-- email: davisjohn@example.org
-  name: Sarah Kelly
-  phone: 878-727-2528
-  relationship: Parent
-- email: cookjeffrey@example.org
-  name: Paula Russo
-  phone: 232.902.4876x703
-  relationship: Cousin
-- email: xjackson@example.org
-  name: Lauren Alvarez
-  phone: (794)490-3229
+- email: karen50@example.com
+  name: Kevin Austin
+  phone: 325-254-4392x185
+  relationship: Friend
+- email: martinezlydia@example.com
+  name: Luis Bennett
+  phone: +1-932-260-4291x5674
+  relationship: Wife
+- email: schmittsarah@example.org
+  name: Adam King
+  phone: +1-440-520-4492x82687
   relationship: Parent
 screener:
-  disability: true
-  hybrid: false
+  disability: false
+  hybrid: true
   office: true
   over_18: true
-  remote: true
-  start_date: '2000-04-20'
+  remote: false
+  start_date: '2012-10-09'
   us_citizen: true
   veteran: false
   willing_to_travel: true
 skills:
 - category: Technical
   skills:
-  - Machine Learning
-  - C++
-  - Docker
+  - AWS
   - JavaScript
-  - SQL
+  - C++
 - category: Management
   skills:
-  - Project Management
   - Budgeting
-  - Strategic Planning
   - Agile Methodologies
-  - Leadership
+  - Strategic Planning
 - category: Communication
   skills:
+  - Public Speaking
+  - Persuasion
   - Negotiation
-  - Interpersonal Communication
 - category: Analytical
   skills:
-  - Statistics
-  - Critical Thinking
-  - Problem Solving
   - Data Analysis
+  - Critical Thinking
   - Research
 strengths:
-- His hospital large describe five nice nothing well. Number poor doctor company win
-  business bit. See plan film hear attorney buy figure.
+- Store statement already evening five you. Usually south smile look.
 summary:
-  text: Create admit reason hour effort. Answer outside store cell fill authority
-    me. Card wait before forward democratic help. Dog oil true six. Road market soon
-    activity.
+  text: Pretty series on goal down. Keep machine would page what expect speak something.
+    Education former drop recognize. Trade play price.

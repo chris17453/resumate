@@ -1,5 +1,5 @@
 from datetime import datetime
-from .paragraph import ParagraphD,LineDrawer,SpacerD, SVGRRowD,SVGFlowableD,SingleWordD
+from .flowable import ParagraphD,LineDrawer,SpacerD, SVGRRowD,SVGFlowableD,SingleWordD
 from reportlab.platypus import KeepTogether, Paragraph, Spacer
 from reportlab.lib.units import inch
 import copy 
@@ -108,10 +108,7 @@ def add_item(base,section,data,styles,name):
              svg_size=_eval_with_units(item['svg_size'])
              
              for item in items:
-                  svg_array.extend([SVGFlowableD(item,svg_size,svg_size),
-                            SpacerD(5,5,style),
-                            SingleWordD(item,style),
-                            SpacerD(10,5,style)])                    
+                  svg_array.append(SVGFlowableD(item,item,style,svg_size,svg_size,5))
              svgRow=SVGRRowD(svg_array)
              pdf_object.append(svgRow)
 

@@ -18,10 +18,7 @@ def main():
     if args.dir==None:
         args.dir=os.path.dirname(args.file)
         
-    if os.path.exists(args.dir):
-        print("Error: Directory already exists.")
-
-    else: 
+    if not os.path.exists(args.dir):
         os.makedirs(args.dir)
     if args.action == 'new_style':
         generate_template(args.file)

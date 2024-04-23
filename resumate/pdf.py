@@ -7,7 +7,7 @@ from reportlab.platypus import BaseDocTemplate,FrameBreak,PageBreak
 from .pdf_metadata import load_page_template_metadata, create_page_template, create_combined_template, calculate_objects
 # from .experiences import add_experiences
 #from .old.skills import add_skills
-from .paragraph import rendered_details
+from .flowable import rendered_details
 # from .summary import add_summary
 # from .education import add_education
 # from .achievements import add_achievements

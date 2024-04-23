@@ -98,7 +98,7 @@ def generate_template(template_file):
     column_wide['summary']={'order':1,'keep_together': True, 'type': 'text', 'data': 'text', 
                             'format': [
                                 {'data': 'text', 'type': 'string', 'style': 'Heading2'},
-                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws'], 'type': 'svgrow', 'style': 'Heading2','svg_size':'.25 inch'},
+                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws-ec2-flatened'], 'type': 'svgrow', 'style': 'Heading2','svg_size':'.25 inch'},
                                 ]}
     column_wide['experiences'] = {'order':2,'keep_together': False, 'type': 'array', 'data': ['role', 'company', 'start', 'end', 'curently_working', 'feature_comment', 'success', 'skills_used'], 
                                   'format': [{'data': 'role', 'type': 'string', 'style': 'Heading2'}, 

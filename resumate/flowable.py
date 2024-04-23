@@ -9,6 +9,8 @@ from reportlab.pdfbase.pdfmetrics import stringWidth
 from io import BytesIO
 import logging
 
+from .svg_flatener import flaten_svg
+
 rendered_details = []
 import warnings
 
@@ -46,16 +48,23 @@ logger.setLevel(logging.WARNING)
 handler = WarningCaptureHandler()
 logger.addHandler(handler)
 
+def insert_suffix_before_extension(filename, suffix):
+    base_name, extension = os.path.splitext(filename)
+    return f"{base_name}_{suffix}{extension}"
 
 def search_svg(technology):
     # Navigate to the icons directory
-    icons_dir = "devicon/icons"
+    icons_dir = "submodules/devicons/icons"
     tech_dir = os.path.join(icons_dir, technology)
 
     # Check if the technology directory exists
     if not os.path.exists(tech_dir):
-        print("Technology not found.")
-        return None
+        print("Technology not in devicon")
+        icons_dir = os.path.join("submodules/logos/logos",technology.replace(' ','-')+".svg")
+        if not os.path.exists(icons_dir):    
+            print("Technology not in logos: "+icons_dir)
+            return None
+        return icons_dir
 
     # Get all SVG files in the technology directory
     svg_files = [f for f in os.listdir(tech_dir) if f.endswith(".svg")]
@@ -82,8 +91,13 @@ def search_svg(technology):
             buffer.close()
             return svg_path
         except Exception as e:
-            print(f"Error loading or drawing SVG file {svg_path}: {e}")
-            continue
+            output=insert_suffix_before_extension(svg_path,"_flatten")
+            flaten_svg(svg_path,output)
+            print ("Flatening")
+            print(output)
+            return output
+            #print(f"Error loading or drawing SVG file {svg_path}: {e}")
+            #continue
 
     print("No suitable SVG files found for the technology.")
     return None
@@ -191,44 +205,70 @@ class SpacerD(Flowable):
         return self.width,self.height
     
 class SVGFlowableD(Flowable):
-    def __init__(self, svg_file, width=None, height=None):
+    def __init__(self, svg_file, text=None, style=None, width=None, height=None,padding=5):
         super().__init__()
         self.svg_file = search_svg(svg_file)
-        self.target_width=width
-        self.target_height=height
         self.drawing = svg2rlg(self.svg_file)
-        if self.drawing==None:
-            self.width=width
-            self.height=height
-        else:    
+        self.text=text
+        self.style=style
+        self.svg_x=0
+        self.svg_y=0
+        self.svg_width=width
+        self.svg_height=height
+        self.text_x=0
+        self.text_y=0
+        self.text_width=0
+        self.text_height=0
+        self.padding=5
+        self.calculate_bounds()
+
+    def calculate_bounds(self):
+        if self.text:
+            self.text_width = stringWidth(self.text, self.style.fontName, self.style.fontSize)
+            self.text_height = self.style.leading #x+self.text_x,y+self.text_y
+        if self.drawing:
             # Calculate scaling factors based on desired width and height
-            if self.target_width and self.target_height:
-                scaling_x = self.target_width / self.drawing.minWidth()
-                scaling_y = self.target_height / self.drawing.height
+            if self.svg_width and self.svg_height:
+                scaling_x = self.svg_width / self.drawing.minWidth()
+                scaling_y = self.svg_height / self.drawing.height
             elif self.width:
-                scaling_x = scaling_y = self.target_width / self.drawing.width
+                scaling_x = scaling_y = self.svg_width / self.drawing.width
             elif self.height:
-                scaling_x = scaling_y = self.target_height / self.drawing.height
+                scaling_x = scaling_y = self.svg_height / self.drawing.height
             else:
                 print("Either width or height must be provided.")
                 return
             self.drawing.width = self.drawing.minWidth() * scaling_x
             self.drawing.height = self.drawing.height * scaling_y
-            self.width = self.drawing.width
-            self.height = self.drawing.height
+            self.svg_width = self.drawing.width
+            self.svg_height = self.drawing.height
             self.drawing.scale(scaling_x,scaling_y)
+
+        self.width=max(self.svg_width,self.text_width)+self.padding*2
+        self.height=self.svg_height+self.text_height+self.padding*3
+
+        self.text_x=(self.width-self.text_width)/2
+        self.text_y=self.padding #self.height-self.text_height-self.padding
+        self.svg_x=(self.width-self.svg_width)/2
+        self.svg_y=self.padding*2+self.text_height
+
 
     def wrapOn(self,canv, width, height):
         return self.width,self.height
 
-
-    def drawOn(self, canv, x, y, _sW=0):
-        self.canv = canv
+    def drawOn(self, canvas, x, y, _sW=0):
         if self.drawing:
-            renderPDF.draw(self.drawing, canv, x,y)
+            renderPDF.draw(self.drawing, canvas, x+self.svg_x,y+self.svg_y)
+            #canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
+            #canvas.rect(x+self.svg_x,y+self.svg_y,self.svg_width, self.svg_height, stroke=1, fill=0)
+
+        canvas.setFont(self.style.fontName, self.style.fontSize)
+        canvas.setFillColor(self.style.textColor)
+        canvas.drawString(x+self.text_x,y+self.text_y, self.text)
+        #canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
+        #canvas.rect(x+self.text_x,y+self.text_y,self.text_width, self.text_height, stroke=1, fill=0)
+
         capture_details(self,  x, y)
-
-
 
 
 class SVGRRowD(Flowable):

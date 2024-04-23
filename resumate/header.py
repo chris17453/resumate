@@ -1,7 +1,7 @@
 from reportlab.platypus import Paragraph,Frame,Image
 from .shapes import shape_circle,shape_rectangle, shape_picture
 from reportlab.lib.utils import ImageReader
-from .paragraph import LineDrawer, ParagraphD
+from .flowable import LineDrawer, ParagraphD
 
 from .section import add_items
 

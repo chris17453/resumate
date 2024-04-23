@@ -1,3 +1,6 @@
-[submodule "devicon"]
-	path = devicon
+[submodule "submodules/devicons"]
+	path = submodules/devicons
 	url = https://github.com/devicons/devicon.git
+[submodule "submodules/logos"]
+	path = submodules/logos
+	url = https://github.com/gilbarbara/logos.git
