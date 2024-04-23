@@ -98,7 +98,10 @@ def generate_template(template_file):
     column_wide['summary']={'order':1,'keep_together': True, 'type': 'text', 'data': 'text', 
                             'format': [
                                 {'data': 'text', 'type': 'string', 'style': 'Heading2'},
-                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws-ec2'], 'type': 'svgrow', 'style': 'Heading2','svg_size':'.25 inch'},
+                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws-ec2'], 'type': 'svgrow', 'placement':'top','style': 'Heading2','svg_size':'.25 inch'},
+                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws-ec2'], 'type': 'svgrow', 'placement':'bottom','style': 'Heading2','svg_size':'.25 inch'},
+                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws-ec2'], 'type': 'svgrow', 'placement':'left','style': 'Heading2','svg_size':'.25 inch'},
+                                {'data': ['cplusplus','csharp','python','ansible','terraform','aws-ec2'], 'type': 'svgrow', 'placement':'right','style': 'Heading2','svg_size':'.25 inch'},
                                 ]}
     column_wide['experiences'] = {'order':2,'keep_together': False, 'type': 'array', 'data': ['role', 'company', 'start', 'end', 'curently_working', 'feature_comment', 'success', 'skills_used'], 
                                   'format': [{'data': 'role', 'type': 'string', 'style': 'Heading2'}, 
@@ -106,7 +109,7 @@ def generate_template(template_file):
                                              {'data': 'company', 'type': 'string', 'style': 'Heading2'}, 
                                              {'data': 'feature_comment', 'type': 'string', 'style': 'Text'}, 
                                              {'data': 'success', 'type': 'list', 'style': 'List'}, 
-                                             {'data': 'skills_used', 'type': 'table', 'style': 'Table'},
+                                             {'data': 'skills', 'type': 'table', 'style': 'Table'},
                                              {'data': 15, 'type': 'spacer', 'style': ''}
                                              
                                              ]}

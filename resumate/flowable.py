@@ -211,7 +211,7 @@ class SpacerD(Flowable):
         return self.width,self.height
     
 class SVGFlowableD(Flowable):
-    def __init__(self, svg_file, text=None, style=None, width=None, height=None,padding=5):
+    def __init__(self, svg_file, text=None, style=None, placement="bottom", width=None, height=None,padding=5):
         super().__init__()
         self.svg_file = search_svg(svg_file)
         self.drawing = svg2rlg(self.svg_file)
@@ -225,7 +225,8 @@ class SVGFlowableD(Flowable):
         self.text_y=0
         self.text_width=0
         self.text_height=0
-        self.padding=5
+        self.padding=padding
+        self.placement=placement
         self.calculate_bounds()
 
     def calculate_bounds(self):
@@ -250,13 +251,41 @@ class SVGFlowableD(Flowable):
             self.svg_height = self.drawing.height
             self.drawing.scale(scaling_x,scaling_y)
 
-        self.width=max(self.svg_width,self.text_width)+self.padding*2
-        self.height=self.svg_height+self.text_height+self.padding*3
+        if self.placement=="bottom":
+            self.width=max(self.svg_width,self.text_width)+self.padding*2
+            self.height=self.svg_height+self.text_height+self.padding*3
 
-        self.text_x=(self.width-self.text_width)/2
-        self.text_y=self.padding #self.height-self.text_height-self.padding
-        self.svg_x=(self.width-self.svg_width)/2
-        self.svg_y=self.padding*2+self.text_height
+            self.text_x=(self.width-self.text_width)/2
+            self.text_y=self.padding #self.height-self.text_height-self.padding
+            self.svg_x=(self.width-self.svg_width)/2
+            self.svg_y=self.padding*2+self.text_height
+
+        elif self.placement=="top":
+            self.width=max(self.svg_width,self.text_width)+self.padding*2
+            self.height=self.svg_height+self.text_height+self.padding*3
+
+            self.text_x=(self.width-self.text_width)/2
+            self.text_y=self.padding*2+self.svg_height #self.height-self.text_height-self.padding
+            self.svg_x=(self.width-self.svg_width)/2
+            self.svg_y=self.padding
+
+        elif self.placement=="left":
+            self.width=self.svg_width+self.text_width+self.padding*2
+            self.height=self.svg_height+self.padding*2
+
+            self.text_x=self.padding
+            self.text_y=(self.height-self.text_height)/2
+            self.svg_x=self.padding*2+self.text_width
+            self.svg_y=self.padding
+
+        elif self.placement=="right":
+            self.width=self.svg_width+self.text_width+self.padding*2
+            self.height=self.svg_height+self.padding*2
+
+            self.text_x=self.padding*2+self.svg_width
+            self.text_y=(self.height-self.text_height)/2
+            self.svg_x=self.padding
+            self.svg_y=self.padding
 
 
     def wrapOn(self,canv, width, height):
@@ -296,13 +325,15 @@ class SVGRRowD(Flowable):
 
         for item in self.contents:
             w,h=item.wrap(width,height)
-            if h>height: 
-                height=h
-
+            
             if mx+w>width:
                 mx=0
                 my+=height
                 height=0
+                
+            if h>height: 
+                height=h
+
             mx+=w
         my+=height
 
@@ -322,21 +353,22 @@ class SVGRRowD(Flowable):
         my=0
         height=0
         width=self._frame.width
-        for flowable in self.contents:
-            w,h=flowable.wrap(self.width,self.height)
+        for item in self.contents:
+            w,h=item.wrap(width,height)
+            
+            if mx+w>width:
+                mx=0
+                my+=height
+                height=0
+                
             if h>height: 
                 height=h
 
-            if mx+w>width:
-                mx=0
-                my-=height
-                height=0
+            item.drawOn(canvas, x+mx, y+my)
+            mx+=w
+        my+=height
             #canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
             #canvas.rect(x+mx,y+my,flowable.width, flowable.height, stroke=1, fill=0)
-            flowable.drawOn(canvas, x+mx, y+my)
-            mx+=w
-           
-        my-=height
         capture_details(self,  x, y)
 
 

@@ -106,9 +106,9 @@ def add_item(base,section,data,styles,name):
              svg_array=[]
              items=item['data']
              svg_size=_eval_with_units(item['svg_size'])
-             
+             placement=item['placement']
              for item in items:
-                  svg_array.append(SVGFlowableD(item,item,style,svg_size,svg_size,5))
+                  svg_array.append(SVGFlowableD(item,item,style,placement,svg_size,svg_size,5))
              svgRow=SVGRRowD(svg_array)
              pdf_object.append(svgRow)
 

@@ -56,7 +56,7 @@ def generate_experience():
         'currently_working': fake.boolean(chance_of_getting_true=25),
         'feature_comment': fake.paragraph(nb_sentences=2),
         'successes': [fake.sentence() for _ in range(random.randint(2, 5))],
-        'skills_used': [generate_skills(random.choice(['Technical', 'Management', 'Communication', 'Analytical']))
+        'skills': [generate_skills(random.choice(['Technical', 'Management', 'Communication', 'Analytical']))
                         for _ in range(random.randint(1, 4))]
     }
 
