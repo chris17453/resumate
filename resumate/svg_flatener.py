@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import argparse
 import matplotlib.colors as mcolors
+import numpy as np
+
 
 def load_svg(filename):
     tree = ET.parse(filename)
@@ -96,7 +98,6 @@ def create_gradient_slivers(root, rect, stops, num_slivers=20):
     parent.remove(rect)
 
 def replace_gradient_with_slivers(tree, root, namespace):
-    rects_to_remove = []
     rects = root.findall('.//svg:rect', namespace)
     for rect in rects:
         fill = rect.get('fill')
@@ -104,16 +105,44 @@ def replace_gradient_with_slivers(tree, root, namespace):
             gradient_id = fill[5:-1]  # Extract ID from url(#id)
             stops = get_gradient_stops(root, gradient_id, namespace)
             create_gradient_slivers(root, rect, stops)
-            rects_to_remove.append(rect)  # Append rect to the list to be removed later
 
-    # Check if the rect is still part of the tree before removing
-    for rect in rects_to_remove:
-        if rect in root:
-            root.remove(rect)
+    paths = root.findall('.//svg:path', namespace)
+    for path in paths:
+        fill = path.get('fill')
+        if fill.startswith('url(#'):
+            gradient_id = fill[5:-1]  # Extract ID from url(#id)
+            stops = get_gradient_stops(root, gradient_id, namespace)
+            average_color = calculate_average_color([stop[1] for stop in stops])
+            path.set('fill', average_color)
+
+    gradients = root.findall('.//svg:linearGradient', namespace)
+    for grad in gradients:
+        try:
+            root.remove(grad)
+        except:
+            pass
+    gradients = root.findall('.//svg:radialGradient', namespace)
+    for grad in gradients:
+        try:
+            root.remove(grad)
+        except:
+            pass
+
     return tree
+
+def calculate_average_color(colors):
+    """Calculate the average color from a list of colors."""
+    rgb_colors = [mcolors.to_rgba(color) for color in colors]
+    average_rgb = np.mean(rgb_colors, axis=0)
+    return mcolors.to_hex(average_rgb)
 
 def get_gradient_stops(root, gradient_id, namespace):
     gradient = root.find(f'.//svg:linearGradient[@id="{gradient_id}"]', namespace)
+    if gradient==None:
+        gradient = root.find(f'.//svg:radialGradient[@id="{gradient_id}"]', namespace)
+        if gradient==None:
+            #print ("NOPE")
+            return []
     stops = gradient.findall('svg:stop', namespace)
     stop_details = []
     for stop in stops:

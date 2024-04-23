@@ -56,32 +56,36 @@ def search_svg(technology):
     # Navigate to the icons directory
     icons_dir = "submodules/devicons/icons"
     tech_dir = os.path.join(icons_dir, technology)
+    
+    if os.path.exists(tech_dir):
+        # Get all SVG files in the technology directory
+        svg_files = [os.path.join(tech_dir, f) for f in os.listdir(tech_dir) if f.endswith(".svg")]
+        
 
-    # Check if the technology directory exists
-    if not os.path.exists(tech_dir):
+
+        # Sort files with "original" and without "wordmark" first, then others
+        def custom_sort(item):
+            if "original" in item:
+                if "wordmark" in item:
+                    return 1  # "original wordmark" as second priority
+                return 0  # "original" as top priority
+            return 2  # all other items as lowest priority
+
+        svg_files=sorted(svg_files,key= custom_sort)
+
+    else:
         print("Technology not in devicon")
+        print(technology)
         icons_dir = os.path.join("submodules/logos/logos",technology.replace(' ','-')+".svg")
+        print(icons_dir)
         if not os.path.exists(icons_dir):    
             print("Technology not in logos: "+icons_dir)
             return None
-        return icons_dir
+        svg_files=[icons_dir]
 
-    # Get all SVG files in the technology directory
-    svg_files = [f for f in os.listdir(tech_dir) if f.endswith(".svg")]
-
-    # Sort files with "original" and without "wordmark" first, then others
-    def custom_sort(item):
-        if "original" in item:
-            if "wordmark" in item:
-                return 1  # "original wordmark" as second priority
-            return 0  # "original" as top priority
-        return 2  # all other items as lowest priority
-
-    svg_files=sorted(svg_files,key= custom_sort)
 
     # Attempt to draw and render each SVG file and handle warnings as exceptions
     for svg_file in svg_files:
-        svg_path = os.path.join(tech_dir, svg_file)
         try:
             drawing = svg2rlg(svg_path)
             # Create a buffer for PDF output
@@ -89,10 +93,12 @@ def search_svg(technology):
             # Render the drawing to the buffer
             renderPDF.drawToFile(drawing, buffer)
             buffer.close()
-            return svg_path
+            return svg_file
         except Exception as e:
-            output=insert_suffix_before_extension(svg_path,"_flatten")
-            flaten_svg(svg_path,output)
+            output=insert_suffix_before_extension(svg_file,"_flatten")
+            print ("Flatening")
+            print(output)
+            flaten_svg(svg_file,output)
             print ("Flatening")
             print(output)
             return output

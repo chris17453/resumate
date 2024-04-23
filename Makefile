@@ -34,6 +34,11 @@ generate_fake:new_style
 	$(PYTHON) -m resumate.cli generate_fake $(YAML_FILE)
 	$(PYTHON) -m resumate.cli generate_pdf $(YAML_FILE)
 
+flaten-rect:
+	python resumate/svg_flatener.py --input submodules/logos/logos/aws-ec2.svg  --output submodules/logos/logos/aws-ec2-flatened.svg
+
+flaten-path:
+	python resumate/svg_flatener.py --input submodules/devicons/icons/python/python-original.svg  --output submodules/devicons/icons/python/python-original_flaten.svg
 
 extract: template
 	$(PYTHON) -m resumate.cli extract "$(TEMPLATE_PDF_FILE)"
