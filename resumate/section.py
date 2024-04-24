@@ -81,27 +81,29 @@ def add_item(base,section,data,styles,name):
     #print(data)
     #print(section)
     object_type=ParagraphD
-    if name=='header' or name=='footer':
-         object_type=Paragraph
 
     data_copy=convert_data(data)
     for item in section['format']:
         #print(item)
         style=get_style(name,item['style'],styles)
+        bold=None
+        color=None
+        if 'color' in item:
+            color=item['color']
+       
         if item['type']=="spacer":
                 pdf_object.append(SpacerD(5,item['data']))
         elif item['type']=="string":
                 pdf_object.append(object_type(str(data_copy[item['data']]), style))
         elif item['type']=="format":
-                #print(data)
                 pdf_object.append(object_type(str(item['data'].format(**data_copy)), style))
         elif item['type']=="list":
             if isinstance(data_copy,str):
-                pdf_object.append(object_type(data_copy, style,  bulletText=base['list']['bullet_style']))
+                pdf_object.append(object_type(data_copy, style, bulletText=base['list']['bullet_style']))
             else:
                 pdf_object.append(object_type(item['data'].format(**data_copy), style,  bulletText=base['list']['bullet_style']))
         elif item['type'] == "svg":
-            pdf_object.append(SVGFlowableD(item['data'],_eval_with_units(item['width']),_eval_with_units(item['height'])))
+            pdf_object.append(SVGFlowableD(item['svg'],str(data_copy[item['data']]),style,item['placement'],_eval_with_units(item['size']),color=color,debug=None))
         elif item['type'] == "svgrow":
              svg_array=[]
              items=item['data']

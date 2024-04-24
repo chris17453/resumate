@@ -1,371 +1,327 @@
 achievements:
-- Store deal issue issue fear. Team somebody final year safe situation discover.
-- Work become energy its goal decide. Thousand successful large position reveal turn.
-  Window degree food hit Mrs.
-- Upon animal nice face resource analysis international.
-- Day necessary spend prevent forward task. Ahead community visit loss.
-- Key property personal cause kitchen control open himself.
+- Watch amount choose nor nor education compare her.
+- They loss officer despite cell fly. Compare up rate bill industry three.
+- Once positive article central. Push make idea.
+- Ten Mrs radio keep require. Should government bill apply.
+- Rich environmental protect attack war. Score parent scientist official difficult.
 certificates:
-- date: '1986-02-13'
-  name: Synergized uniform collaboration Course
-- date: '2001-05-06'
-  name: Robust multi-tasking time-frame Course
+- date: '2006-06-20'
+  name: Optimized responsive Graphic Interface Course
+- date: '1974-12-06'
+  name: Future-proofed bottom-line database Course
 cover_page: false
 education:
-- course: Triple-buffered real-time algorithm Course
-  end: '2011-05-10'
-  school: Bridges, Smith and Wolf School
-  start: '1984-04-28'
+- course: Decentralized exuding open architecture Course
+  end: '1981-12-24'
+  school: Montgomery, Gutierrez and Poole School
+  start: '1973-01-17'
 experiences:
-- company: Garner-Horne
-  currently_working: false
-  end: '2024-01-22'
-  feature_comment: Reach amount pay civil bag near do. Surface dog yes front start
-    step.
-  role: Copy
-  skills:
-  - category: Technical
-    skills:
-    - Java
-    - AWS
-    - C++
-  - category: Analytical
-    skills:
-    - Research
-    - Critical Thinking
-  start: '2015-08-03'
-  successes:
-  - Defense worry animal also black network remember.
-  - Find notice wrong notice bill say.
-  - Experience itself too ball change require.
-- company: Griffin-Miller
+- company: Foley, Reid and Oconnell
   currently_working: true
-  end: '2023-11-28'
-  feature_comment: Participant cold team but. Check leave employee toward field along.
-  role: Librarian, academic
+  end: '2023-06-30'
+  feature_comment: Save class own seem table research. Beautiful point race simple.
+  role: Risk analyst
   skills:
-  - category: Analytical
-    skills:
-    - Data Analysis
-    - Statistics
-    - Critical Thinking
-    - Problem Solving
-    - Research
-  - category: Management
-    skills:
-    - Agile Methodologies
-    - Budgeting
-    - Leadership
-    - Strategic Planning
-  - category: Management
-    skills:
-    - Strategic Planning
-    - Leadership
-    - Agile Methodologies
-    - Budgeting
-  start: '2019-11-29'
-  successes:
-  - Along discuss reach force.
-  - Evening especially thus positive.
-  - Shoulder part whether night hot act.
-  - Size Mrs score put somebody.
-- company: Faulkner, Williams and Hansen
-  currently_working: true
-  end: '2022-09-12'
-  feature_comment: Interesting firm born government.
-  role: Systems analyst
-  skills:
-  - category: Management
-    skills:
-    - Leadership
-    - Project Management
-    - Agile Methodologies
-    - Budgeting
-  - category: Communication
-    skills:
-    - Persuasion
-    - Public Speaking
-    - Interpersonal Communication
-    - Writing
-    - Negotiation
-  - category: Management
-    skills:
-    - Strategic Planning
-    - Budgeting
-    - Agile Methodologies
-  - category: Technical
-    skills:
-    - Kubernetes
-    - Docker
-    - AWS
-    - SQL
-  start: '2014-10-30'
-  successes:
-  - Too understand window public.
-  - Certain free month there thousand.
-  - Per beat site exactly someone pass themselves.
-  - Exist everything smile movie.
-- company: Schmidt-Stewart
-  currently_working: false
-  end: '2022-08-15'
-  feature_comment: Agent risk reason view consumer energy contain.
-  role: Surveyor, mining
-  skills:
-  - category: Management
-    skills:
-    - Budgeting
-    - Project Management
-    - Agile Methodologies
-    - Strategic Planning
-  - category: Technical
-    skills:
-    - Kubernetes
-    - Java
-    - AWS
-  - category: Communication
-    skills:
-    - Interpersonal Communication
-    - Negotiation
-    - Writing
-    - Persuasion
-  start: '2018-09-26'
-  successes:
-  - Rise certainly live better.
-  - Pretty politics manage send responsibility fact growth.
-  - After thought example news.
-- company: White and Sons
-  currently_working: false
-  end: '2024-01-18'
-  feature_comment: Wait company sign shake begin conference cut. Baby boy out image
-    new research.
-  role: Scientist, clinical (histocompatibility and immunogenetics)
-  skills:
-  - category: Management
-    skills:
-    - Strategic Planning
-    - Agile Methodologies
-    - Project Management
-    - Leadership
   - category: Technical
     skills:
     - Python
-    - Machine Learning
-    - Java
-    - C++
-  start: '2016-04-22'
-  successes:
-  - Treatment goal true Mrs difficult.
-  - Church identify next individual five.
-  - Center political care.
-  - Mother challenge truth perhaps nature amount.
-- company: Banks-Peterson
-  currently_working: false
-  end: '2023-09-12'
-  feature_comment: Idea down begin fish.
-  role: Chief of Staff
-  skills:
-  - category: Communication
-    skills:
-    - Interpersonal Communication
-    - Public Speaking
-    - Writing
-    - Persuasion
-    - Negotiation
-  - category: Technical
-    skills:
-    - Java
-    - Machine Learning
-    - Kubernetes
-  start: '2015-10-17'
-  successes:
-  - Eight chance trial toward decade north.
-  - Yard way seven seem ten candidate health.
-- company: Jones Inc
-  currently_working: true
-  end: '2023-04-09'
-  feature_comment: Law identify food. Church author a this force beat gun.
-  role: Engineer, civil (contracting)
-  skills:
+    - Docker
   - category: Analytical
     skills:
-    - Statistics
+    - Critical Thinking
+    - Problem Solving
+  - category: Analytical
+    skills:
     - Research
     - Problem Solving
-    - Data Analysis
     - Critical Thinking
   - category: Communication
     skills:
-    - Public Speaking
-    - Writing
     - Interpersonal Communication
+    - Public Speaking
+  start: '2020-06-20'
+  successes:
+  - Knowledge fire think vote.
+  - Hair listen determine blood for make rich.
+  - Reach west everything final.
+  - Always once whatever involve teach.
+- company: Bell, Davis and Garcia
+  currently_working: false
+  end: '2022-08-28'
+  feature_comment: Guy message yes everyone hard.
+  role: Leisure centre manager
+  skills:
+  - category: Technical
+    skills:
+    - JavaScript
+    - C++
+    - SQL
+    - AWS
+    - Machine Learning
+  start: '2016-08-21'
+  successes:
+  - Difference common behavior century.
+  - Discover visit despite generation.
+  - Opportunity week require finally prevent machine.
+  - Gun concern short single.
+  - Fact wall act fear big community several.
+- company: Williams, Lynn and Reynolds
+  currently_working: true
+  end: '2022-06-03'
+  feature_comment: Ok house have civil. Interest later mission.
+  role: Surveyor, minerals
+  skills:
+  - category: Communication
+    skills:
+    - Writing
+    - Public Speaking
+    - Persuasion
     - Negotiation
-    - Persuasion
-  start: '2019-06-15'
-  successes:
-  - Other figure training because star hour.
-  - Group pull really hand.
-- company: Green Inc
-  currently_working: false
-  end: '2022-09-19'
-  feature_comment: Will land police scientist walk black.
-  role: Administrator, local government
-  skills:
-  - category: Communication
-    skills:
     - Interpersonal Communication
-    - Persuasion
-    - Public Speaking
-    - Writing
   - category: Management
     skills:
-    - Strategic Planning
-    - Project Management
-    - Budgeting
-  - category: Management
-    skills:
-    - Budgeting
-    - Strategic Planning
-    - Project Management
-  - category: Communication
-    skills:
-    - Public Speaking
-    - Writing
-    - Interpersonal Communication
-  start: '2018-03-29'
-  successes:
-  - Painting perhaps government nearly peace small.
-  - Move sound item particular main message.
-  - Agency picture best firm.
-- company: Strong-Adams
-  currently_working: false
-  end: '2023-06-16'
-  feature_comment: Buy rate become buy before north billion.
-  role: Travel agency manager
-  skills:
-  - category: Management
-    skills:
-    - Strategic Planning
     - Agile Methodologies
-    - Project Management
+    - Strategic Planning
     - Leadership
     - Budgeting
+  start: '2018-04-26'
+  successes:
+  - Half certain where finish anything exist week.
+  - Let color perhaps perhaps growth wish.
+  - Really end sign.
+- company: Molina PLC
+  currently_working: false
+  end: '2022-07-30'
+  feature_comment: Sign raise become resource risk say industry bring.
+  role: Designer, exhibition/display
+  skills:
+  - category: Technical
+    skills:
+    - Kubernetes
+    - Docker
+    - Python
+    - Java
+  start: '2020-08-16'
+  successes:
+  - Measure while line watch team person.
+  - Value write news great ask beautiful popular figure.
+  - So argue animal box level try develop artist.
+  - Fly image night official series.
+- company: Gibson-Goodwin
+  currently_working: true
+  end: '2023-02-03'
+  feature_comment: Between too decade.
+  role: Accountant, chartered
+  skills:
+  - category: Communication
+    skills:
+    - Writing
+    - Persuasion
+  - category: Communication
+    skills:
+    - Negotiation
+    - Persuasion
+    - Interpersonal Communication
+    - Writing
+    - Public Speaking
+  start: '2015-07-29'
+  successes:
+  - Run structure stand read kind indeed bring.
+  - Member avoid school none.
+- company: Morgan LLC
+  currently_working: false
+  end: '2022-10-07'
+  feature_comment: House describe adult wonder either. Chance remain population talk
+    determine.
+  role: Surveyor, planning and development
+  skills:
+  - category: Technical
+    skills:
+    - Docker
+    - C++
+  - category: Communication
+    skills:
+    - Public Speaking
+    - Interpersonal Communication
+    - Persuasion
+    - Negotiation
+    - Writing
+  start: '2019-03-24'
+  successes:
+  - Avoid simple ask stand personal his.
+  - Fact more tough enough fight citizen attention.
+- company: Nichols, Everett and Duncan
+  currently_working: false
+  end: '2022-12-24'
+  feature_comment: Think over story news. Say child analysis.
+  role: Therapist, horticultural
+  skills:
+  - category: Analytical
+    skills:
+    - Problem Solving
+    - Statistics
+    - Critical Thinking
+    - Data Analysis
+    - Research
+  - category: Technical
+    skills:
+    - Java
+    - Docker
+    - C++
+    - SQL
+  - category: Analytical
+    skills:
+    - Research
+    - Statistics
+    - Critical Thinking
+  start: '2016-02-26'
+  successes:
+  - According six have tough law party pretty.
+  - Interview a good throw serious modern knowledge.
+  - Too report however number.
+  - Industry tough focus movie.
+- company: Solis and Sons
+  currently_working: false
+  end: '2022-06-12'
+  feature_comment: Control feel another then.
+  role: Horticultural therapist
+  skills:
+  - category: Analytical
+    skills:
+    - Critical Thinking
+    - Statistics
+    - Problem Solving
+  - category: Management
+    skills:
+    - Strategic Planning
+    - Leadership
+    - Agile Methodologies
+    - Budgeting
+  - category: Technical
+    skills:
+    - AWS
+    - Kubernetes
+    - Docker
+    - C++
+  - category: Analytical
+    skills:
+    - Data Analysis
+    - Research
+    - Problem Solving
+    - Statistics
+  start: '2018-05-04'
+  successes:
+  - Purpose staff effect their wait her support this.
+  - Simple middle ball any remain service.
+- company: Phillips Inc
+  currently_working: false
+  end: '2022-07-01'
+  feature_comment: Five mention society development. Measure central perform.
+  role: Barrister's clerk
+  skills:
   - category: Technical
     skills:
     - Docker
     - Machine Learning
-    - Kubernetes
-    - C++
     - AWS
-  - category: Technical
-    skills:
-    - Kubernetes
-    - SQL
-  - category: Management
-    skills:
-    - Agile Methodologies
-    - Project Management
-    - Budgeting
-    - Leadership
-  start: '2019-03-09'
-  successes:
-  - Sit mouth claim final situation.
-  - Ball whom large.
-  - Laugh attention mother.
-- company: Lowery Ltd
-  currently_working: true
-  end: '2022-09-12'
-  feature_comment: Degree letter professor admit leg social. Too coach popular real
-    should small first.
-  role: Administrator, local government
-  skills:
   - category: Communication
     skills:
-    - Public Speaking
     - Interpersonal Communication
-    - Writing
-    - Negotiation
-    - Persuasion
-  - category: Analytical
-    skills:
-    - Critical Thinking
-    - Data Analysis
-    - Research
-  - category: Analytical
-    skills:
-    - Critical Thinking
-    - Problem Solving
-    - Statistics
-  start: '2021-09-27'
+    - Public Speaking
+  start: '2016-07-24'
   successes:
-  - Within theory happen read table baby large.
-  - All remain present head.
+  - Collection son man base every night.
+  - Second but generation trip rather.
+  - Loss game red third team.
+- company: Gardner-Williams
+  currently_working: false
+  end: '2024-02-23'
+  feature_comment: Stand some range maybe beautiful person economic. Big American
+    better law stop road join.
+  role: Health physicist
+  skills:
+  - category: Management
+    skills:
+    - Project Management
+    - Budgeting
+    - Agile Methodologies
+  - category: Analytical
+    skills:
+    - Statistics
+    - Problem Solving
+    - Research
+    - Critical Thinking
+  - category: Technical
+    skills:
+    - JavaScript
+    - Machine Learning
+  start: '2022-02-14'
+  successes:
+  - Wife government agree measure.
+  - Space build ability dark moment effect friend.
 header:
-  address: '2119 Martinez Stream Apt. 498
+  address: '022 Andrea Forges Suite 314
 
-    Baileyview, MO 63035'
-  email: ryanbrown@example.org
-  github: github.com/in/suzannenguyen
-  linkedin: linkedin.com/in/uwilliams
-  location: North Sarahport, Kansas
-  name: Christina Thomas
-  phone: 216-264-6665x16533
+    Carterview, NE 39799'
+  email: ronnie13@example.net
+  github: github.com/in/ldiaz
+  linkedin: linkedin.com/in/davidflynn
+  location: Port Leah, Nebraska
+  name: Annette Henry
+  phone: 648.736.9901
   picture: assets/avatar.png
-  position: Software Engineer
+  position: Financial Analyst
 passions:
-- Health this guy offer event executive fire main. Hold firm same common avoid people
-  thank good.
-- Away mean our available. Think wrong eye modern. Evidence again teacher picture
-  evening.
+- Put maintain drug per sense. Imagine measure project find under southern concern.
+- Knowledge pay itself especially.
 references:
-- email: rhondaarellano@example.net
-  name: Gregory Lopez
-  phone: 410-260-8006x5852
-  relationship: Parent
-- email: kennethkennedy@example.com
-  name: Christopher Smith
-  phone: 474.264.4882
-  relationship: Sibling
-- email: joshua90@example.com
-  name: Rhonda Woods
-  phone: 428-957-0959
-  relationship: Coworker
+- email: trose@example.com
+  name: Stacey Ellis
+  phone: 252.885.0516x3133
+  relationship: Wife
+- email: dawn12@example.net
+  name: Ashley Hall
+  phone: (740)469-0891
+  relationship: Partner
+- email: jacoballen@example.com
+  name: Jessica Thompson
+  phone: 269.582.9520x7705
+  relationship: Wife
 screener:
   disability: true
   hybrid: true
-  office: false
-  over_18: true
-  remote: false
-  start_date: '1983-08-17'
+  office: true
+  over_18: false
+  remote: true
+  start_date: '2018-04-09'
   us_citizen: false
   veteran: true
   willing_to_travel: true
 skills:
 - category: Technical
   skills:
-  - SQL
-  - Docker
-  - JavaScript
-  - AWS
   - Kubernetes
+  - Python
 - category: Management
   skills:
-  - Leadership
   - Project Management
+  - Strategic Planning
 - category: Communication
   skills:
-  - Writing
   - Negotiation
+  - Persuasion
+  - Interpersonal Communication
+  - Writing
   - Public Speaking
 - category: Analytical
   skills:
   - Data Analysis
-  - Research
-  - Statistics
   - Problem Solving
   - Critical Thinking
+  - Statistics
 strengths:
-- Finally place whatever interest any production safe. Although beyond plan represent
-  modern action.
+- Check knowledge baby source difficult let. Statement alone once use. Do red billion
+  employee.
 summary:
-  text: Note sing concern that seven part since. Lay suggest create president price
-    cover none. Care memory but small.
+  text: Fast learn kid hit position he together section. Simple southern record. Last
+    at in story this include. Follow notice benefit so.

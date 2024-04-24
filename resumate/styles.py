@@ -13,7 +13,7 @@ alignment_mapping = {
 def create_styles(style_data):
     default_styles = getSampleStyleSheet()  # This gets the default styles
     custom_styles = {}
-
+    
     for style_name, style_attrs in style_data.items():
         # If there's a parent style specified, try to find it in custom styles first
         if 'parent' in style_attrs:
@@ -41,5 +41,9 @@ def create_styles(style_data):
 
         # Create the custom style, ensuring that 'parent' is an actual ParagraphStyle object
         custom_styles[style_name] = ParagraphStyle(name=style_name, parent=parent_style, **style_attrs)
+        bold=None
+        if 'bold' in style_attrs and style_attrs['bold']:
+            bold=True
+        custom_styles[style_name].bold=bold
 
     return custom_styles

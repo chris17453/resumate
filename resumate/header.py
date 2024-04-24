@@ -7,12 +7,14 @@ from .section import add_items
 
 def draw_shapes(metadata,canvas):
     shapes=metadata['objects']
+    ## depth sorting yo
+    
+    filtered_dict = {k: v for k, v in shapes.items() if isinstance(v, shape_rectangle) or isinstance(v, shape_circle) or isinstance(v,shape_picture) }
+    sorted_shapes = sorted(filtered_dict.items(), key=lambda x: x[1].depth)
 
-    for shape in shapes:
-        item=shapes[shape]
-        if not isinstance( item,shape_rectangle) and not isinstance( item,shape_circle) :
-            continue
-        
+
+    for  item in sorted_shapes:
+        item=item[1]
         hex_color=item.background_color
         if hex_color==None:
             continue
@@ -60,11 +62,11 @@ def add_header(canvas, doc, metadata, styles):
     for flowable in story:
         flowable_width, flowable_height = flowable.wrap(header.width, header.height)  # Wrap content to fit the frame
         #print(flowable_width, flowable_height)
+        flowable.drawOn(canvas, header_frame._x1,current_y)
         try:
             current_y -= flowable.style.leading+flowable.style.spaceAfter # Move up the start position for the next flowable
         except:
             current_y -= flowable_height # Move up the start position for the next flowable
-        flowable.drawOn(canvas, header_frame._x1, current_y)
 
     profile_image(metadata['objects']['picture'],resume['header']['picture'],canvas)    
 

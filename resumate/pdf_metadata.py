@@ -35,7 +35,7 @@ def calculate_objects(metadata):
         width=_eval_with_units(item.get('width', '0'), objects)
         height=_eval_with_units(item.get('height', '0'), objects)
         item_id=item.get('id', '')
-        bg_color=item.get('background-color', None)
+        bg_color=item.get('background_color', None)
         objects[item_id] =shape_rectangle(item_id,x1,y1,width,height,bg_color)
     
     item=metadata['picture']
@@ -45,8 +45,9 @@ def calculate_objects(metadata):
     max_height=_eval_with_units(item.get('max_height', '0'), objects)
     mask=item.get('mask', 'circle')
     item_id=item.get('id', '')
-    bg_color=item.get('background-color', None)
-    objects[item_id] =shape_picture(item_id,x1,y1,max_width,max_height,mask,bg_color)
+    bg_color=item.get('background_color', None)
+    depth=item.get('depth', 0)
+    objects[item_id] =shape_picture(item_id,x1,y1,max_width,max_height,mask,bg_color,depth)
 
     
     for item in metadata['shapes']:
@@ -57,14 +58,16 @@ def calculate_objects(metadata):
             y1=_eval_with_units(item.get('top', '0'), objects)
             width=_eval_with_units(item.get('width', '0'), objects)
             height=_eval_with_units(item.get('height', '0'), objects)
-            bg_color=item.get('background-color', None)
-            objects[item_id] =shape_rectangle(item_id,x1,y1,width,height,bg_color)
+            bg_color=item.get('background_color', None)
+            depth=item.get('depth', 0)
+            objects[item_id] =shape_rectangle(item_id,x1,y1,width,height,bg_color,depth)
         if item_type=='circle':
             x1=_eval_with_units(item.get('left', '0'), objects)
             y1=_eval_with_units(item.get('top', '0'), objects)
             diameter=_eval_with_units(item.get('diameter', '0'), objects)
-            bg_color=item.get('background-color', None)
-            objects[item_id] =shape_circle(item_id,x1,y1,diameter,bg_color)
+            bg_color=item.get('background_color', None)
+            depth=item.get('depth', 0)
+            objects[item_id] =shape_circle(item_id,x1,y1,diameter,bg_color,depth)
     
     return objects
 
@@ -103,7 +106,7 @@ def create_combined_template(metadata):
         width=_eval_with_units(frame_data.get('width', '0'), frames_dict)
         height=_eval_with_units(frame_data.get('height', '0'), frames_dict)
         frame_id=frame_data.get('id', '')
-        bg_color=frame_data.get('background-color', None)
+        bg_color=frame_data.get('background_color', None)
         frames_dict[frame_id] =shape_rectangle(frame_id,x1,y1,width,height,bg_color)
         
         if frame_id=='header' or frame_id=='footer':

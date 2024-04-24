@@ -3,7 +3,7 @@ import argparse
 from .io import load_resume_from_yaml,save_resume_to_yaml,create_resume_template
 from .pdf import generate_pdf
 from .generator import generated_resume
-from .template import generate_template
+from .template import template
 
 
 
@@ -21,7 +21,9 @@ def main():
     if not os.path.exists(args.dir):
         os.makedirs(args.dir)
     if args.action == 'new_style':
-        generate_template(args.file)
+        t=template(args.file)
+        t.build()
+        t.save()
         print(f"Created a new template style at {args.file}")
     elif args.action == 'template':
         create_resume_template(args.file)

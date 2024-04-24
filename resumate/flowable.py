@@ -3,7 +3,7 @@ from reportlab.platypus import Paragraph, Spacer, Table, TableStyle
 from reportlab.platypus import Flowable
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
-from svglib.svglib import svg2rlg,logger
+from svglib.svglib import svg2rlg,logger,Svg2RlgAttributeConverter
 from reportlab.graphics import renderPDF
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from io import BytesIO
@@ -53,41 +53,44 @@ def insert_suffix_before_extension(filename, suffix):
     return f"{base_name}_{suffix}{extension}"
 
 def search_svg(technology):
-    # Navigate to the icons directory
-    icons_dir = "submodules/devicons/icons"
-    tech_dir = os.path.join(icons_dir, technology)
-    
-    if os.path.exists(tech_dir):
-        # Get all SVG files in the technology directory
-        svg_files = [os.path.join(tech_dir, f) for f in os.listdir(tech_dir) if f.endswith(".svg")]
+    svg_files=[technology]
+    # if this is not a actual URL
+    if not os.path.exists(technology):
+        # Navigate to the icons directory
+        icons_dir = "submodules/devicons/icons"
+        tech_dir = os.path.join(icons_dir, technology)
         
+        if os.path.exists(tech_dir):
+            # Get all SVG files in the technology directory
+            svg_files = [os.path.join(tech_dir, f) for f in os.listdir(tech_dir) if f.endswith(".svg")]
+            
 
 
-        # Sort files with "original" and without "wordmark" first, then others
-        def custom_sort(item):
-            if "original" in item:
-                if "wordmark" in item:
-                    return 1  # "original wordmark" as second priority
-                return 0  # "original" as top priority
-            return 2  # all other items as lowest priority
+            # Sort files with "original" and without "wordmark" first, then others
+            def custom_sort(item):
+                if "original" in item:
+                    if "wordmark" in item:
+                        return 1  # "original wordmark" as second priority
+                    return 0  # "original" as top priority
+                return 2  # all other items as lowest priority
 
-        svg_files=sorted(svg_files,key= custom_sort)
+            svg_files=sorted(svg_files,key= custom_sort)
 
-    else:
-        print("Technology not in devicon")
-        print(technology)
-        icons_dir = os.path.join("submodules/logos/logos",technology.replace(' ','-')+".svg")
-        print(icons_dir)
-        if not os.path.exists(icons_dir):    
-            print("Technology not in logos: "+icons_dir)
-            return None
-        svg_files=[icons_dir]
+        else:
+            print("Technology not in devicon")
+            print(technology)
+            icons_dir = os.path.join("submodules/logos/logos",technology.replace(' ','-')+".svg")
+            print(icons_dir)
+            if not os.path.exists(icons_dir):    
+                print("Technology not in logos: "+icons_dir)
+                return None
+            svg_files=[icons_dir]
 
 
     # Attempt to draw and render each SVG file and handle warnings as exceptions
     for svg_file in svg_files:
         try:
-            drawing = svg2rlg(svg_path)
+            drawing = svg2rlg(svg_file)
             # Create a buffer for PDF output
             buffer = BytesIO()
             # Render the drawing to the buffer
@@ -109,30 +112,33 @@ def search_svg(technology):
     return None
 
 class ParagraphD(Paragraph):
-    def __init__(self, text, style, **kwargs):
+    def __init__(self, text, style,debug=None, **kwargs):
+        if  style.bold:
+            text=f"<b>{text}</b>"
+            #print("BOLD"+text)
+                        
         super().__init__(text, style, **kwargs)  # Pass all keyword arguments to the superclass
         self.details = {}
+        self.debug=debug
 
-
-    #def wrap(self,aW,aH):
-    #    
-    #    width = stringWidth(self.text, self.style['font_name'], self.style['font_size'])
-    #    
-    #    return super.wrapOn(aW,aH)
-    #    #return self.width,self.height
 
     def wrapOn(self, canv,  availWidth, availHeight):
         text_width = stringWidth(self.text, self.style.fontName, self.style.fontSize)
         #print( text_width)
         # Constrain the width to the calculated text width or available width, whichever is smaller
         constrained_width = min(text_width, availWidth)
-        # Use the constrained width to wrap the paragraph
-        return super().wrap(constrained_width, availHeight)
+        # Use the constrained width to wrap the paragrap
+        return super().wrap(constrained_width, self.style.leading+self.style.spaceAfter+self.style.spaceBefore)
 
 
     def drawOn(self, canvas, x, y, _sW=0):
         #width, height = self.wrap(canvas._doc.width, canvas._doc.height)
         super().drawOn(canvas, x, y, _sW)
+        if self.debug: 
+            canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
+            canvas.rect(x,y,self.width, self.height, stroke=1, fill=0)
+
+         
         capture_details(self,  x, y)
         #print(y,line_height)
 
@@ -211,22 +217,43 @@ class SpacerD(Flowable):
         return self.width,self.height
     
 class SVGFlowableD(Flowable):
-    def __init__(self, svg_file, text=None, style=None, placement="bottom", width=None, height=None,padding=5):
+    def __init__(self, svg_file, text=None, style=None, placement="bottom", size=0,padding=5,color=None,debug=None):
         super().__init__()
+        mapping = (
+            ("red", colors.red),
+            ("#ff0000", colors.red),
+            ("#ff000055", colors.Color(1, 0, 0, 1/3.0)),
+            ("#f00", colors.red),
+            ("#f00f", colors.red),
+            ("rgb(100%,50%,10%)", colors.Color(1, 1.0/255 * 128, 1.0/255 * 26, 1)),
+            ("rgb(255, 0, 0)", colors.red),
+            ("rgba(255, 255, 128, .5)", colors.Color(1, 1, 1.0/255 * 128, .5)),
+            ("fuchsia", colors.Color(1, 0, 1, 1)),
+            ("slategrey", colors.HexColor(0x708090)),
+            ("transparent", colors.Color(0, 0, 0, 0)),
+            ("whatever", None),
+        )
+        args={}
+        if color!=None:
+            color_number = int(color[1:], 16)
+            args['color_converter']= lambda x:colors.HexColor(color)
+
+
         self.svg_file = search_svg(svg_file)
-        self.drawing = svg2rlg(self.svg_file)
+        self.drawing = svg2rlg(self.svg_file,**args)
         self.text=text
         self.style=style
         self.svg_x=0
         self.svg_y=0
-        self.svg_width=width
-        self.svg_height=height
+        self.svg_width=size
+        self.svg_height=size
         self.text_x=0
         self.text_y=0
         self.text_width=0
         self.text_height=0
         self.padding=padding
         self.placement=placement
+        self.debug=debug
         self.calculate_bounds()
 
     def calculate_bounds(self):
@@ -294,14 +321,16 @@ class SVGFlowableD(Flowable):
     def drawOn(self, canvas, x, y, _sW=0):
         if self.drawing:
             renderPDF.draw(self.drawing, canvas, x+self.svg_x,y+self.svg_y)
-            #canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
-            #canvas.rect(x+self.svg_x,y+self.svg_y,self.svg_width, self.svg_height, stroke=1, fill=0)
+            if self.debug: 
+                canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
+                canvas.rect(x+self.svg_x,y+self.svg_y,self.svg_width, self.svg_height, stroke=1, fill=0)
 
         canvas.setFont(self.style.fontName, self.style.fontSize)
         canvas.setFillColor(self.style.textColor)
         canvas.drawString(x+self.text_x,y+self.text_y, self.text)
-        #canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
-        #canvas.rect(x+self.text_x,y+self.text_y,self.text_width, self.text_height, stroke=1, fill=0)
+        if self.debug: 
+            canvas.setStrokeColorRGB(0, 0, 0)  # Black color for the rectangle
+            canvas.rect(x+self.text_x,y+self.text_y,self.text_width, self.text_height, stroke=1, fill=0)
 
         capture_details(self,  x, y)
 
