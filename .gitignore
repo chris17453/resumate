@@ -7,3 +7,7 @@ __pycache__
 *.zip
 *.gz
 *.tar
+ build/
+dist/
+resumate.egg-info/
+resumate/icons/

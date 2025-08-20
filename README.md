@@ -133,9 +133,8 @@ We love FluentUI's colorful icons, but they're **several hundred MB**. We chose 
 
 When you write `svg: something`, Resumate searches in order:
 1. **File exists?** → Uses it
-2. **In DevIcons?** → Uses it
-3. **In Simple Icons?** → Uses it  
 4. **In Font Awesome?** → Uses it
+3. **In Simple Icons?** → Uses it  
 5. **Can't find it?** → Logs warning, continues
 
 ## 🎨 Templates
@@ -210,7 +209,6 @@ Built with:
 - Coffee - The real MVP
 
 Icons from:
-- DevIcons - All the tech logos
 - Font Awesome - Everything else (2000+ icons)
 - Simple Icons - The ones DevIcons missed
 - Your imagination - Custom SVGs welcome!
