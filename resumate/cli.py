@@ -1,19 +1,36 @@
+# resumate/cli.py
 import os
 import argparse
 from .io import load_resume_from_yaml, save_resume_to_yaml, create_resume_template
 from .pdf import generate_pdf
 from .generator import generated_resume
 from .template import template
-
+from .template_loader import template_loader
 
 def main():
     parser = argparse.ArgumentParser(description="Resume YAML File Management")
-    parser.add_argument('action', choices=['template', 'load', 'save', 'generate_pdf', 'generate_fake', 'extract', 'new_style'], help="Action to perform: create a new template, load data, save data, generate PDF, or generate fake resume data, extract pdf data, make a new pdf template")
-    parser.add_argument('file', help="Path to the YAML file")
+    parser.add_argument('action', choices=['template', 'load', 'save', 'generate_pdf', 'generate_fake', 'extract', 'new_style', 'list_templates'], 
+                       help="Action to perform: create a new template, load data, save data, generate PDF, generate fake resume data, extract pdf data, make a new pdf template, list available templates")
+    parser.add_argument('file', nargs='?', help="Path to the YAML file")
     parser.add_argument('dir', nargs='?', default=None, help="Directory to store resume files")
-    parser.add_argument('--template', '-t', default=None, help="Template file to use (default: template/resume-1.yaml)")
+    parser.add_argument('--template', '-t', default=None, help="Template name (built-in) or file path (default: template/resume-1.yaml)")
 
     args = parser.parse_args()
+
+    # Handle list_templates which doesn't need a file
+    if args.action == 'list_templates':
+        templates = template_loader.list_templates()
+        print("\nAvailable built-in templates:")
+        for tmpl in templates:
+            print(f"  • {tmpl['name']} (v{tmpl.get('version', '1.0')})")
+            if tmpl.get('description'):
+                print(f"    {tmpl['description']}")
+        print("\nUse with: --template <name>")
+        return
+
+    # All other actions need a file
+    if not args.file:
+        parser.error(f"'{args.action}' requires a file argument")
 
     if args.dir == None:
         args.dir = os.path.dirname(args.file)
@@ -46,24 +63,32 @@ def main():
         
     elif args.action == 'generate_pdf':
         data = load_resume_from_yaml(args.file)
-        pdf_file = args.file.replace('.yaml', '.pdf')  # Assuming the output PDF file will have the same name as the YAML file
+        pdf_file = args.file.replace('.yaml', '.pdf')
         
         # Determine which template to use
         if args.template:
-            template_file = args.template
+            # Resolve template name to file path
+            try:
+                template_file = template_loader.resolve_template_path(args.template)
+            except:
+                template_file = args.template
         else:
             # Try QR template first, fall back to original
             qr_template = "template/resume-with-qr.yaml"
             default_template = "template/resume-1.yaml"
-            template_file = qr_template if os.path.exists(qr_template) else default_template
+            
+            # Also check for built-in default
+            try:
+                template_file = template_loader.resolve_template_path('resume-1')
+            except:
+                template_file = qr_template if os.path.exists(qr_template) else default_template
         
         if not os.path.exists(template_file):
-            print(f"Error: Template file '{template_file}' not found")
+            print(f"Error: Template '{template_file}' not found")
             return
             
         generate_pdf(data, pdf_file, template_file)
         print(f"PDF generated: {pdf_file} using template: {template_file}")
-        
     else:
         parser.print_help()
 

@@ -1,9 +1,9 @@
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import Frame, PageTemplate
-from reportlab.lib.units import inch
 from functools import partial
 
 import yaml
+from .template_loader import template_loader
 from .header import header_footer_page1, header_footer_continuation
 from .styles import create_styles
 from .common import _eval_with_units
@@ -11,18 +11,30 @@ from .common import _eval_with_units
 from .shapes import shape_circle, shape_rectangle, shape_picture, shape_qrcode
 
 
+def load_page_template_metadata(template_identifier):
+    """
+    Load page template metadata from a template name or file path.
+    
+    Args:
+        template_identifier: Template name (for built-in) or path to template file
+        
+    Returns:
+        Template metadata dictionary
+    """
+    # Use the template loader to get template data
+    metadata = template_loader.get_template(template_identifier)
+    return metadata
+
 def load_resume_from_yaml(yaml_file):
     """Load resume data from a YAML file."""
     with open(yaml_file, 'r') as file:
         return yaml.safe_load(file)
-
 
 def load_page_template_metadata(metadata_file):
     """Load page template metadata from a YAML file."""
     with open(metadata_file, 'r') as file:
         metadata = yaml.safe_load(file)
     return metadata.get('page_template', {})
-
 
 def calculate_objects(frame_list, shape_list, picture_config=None):
     """Calculate objects for a specific page type"""
@@ -84,7 +96,6 @@ def calculate_objects(frame_list, shape_list, picture_config=None):
         objects[item_id] = shape_picture(item_id, x1, y1, max_width, max_height, mask, bg_color, depth)
     
     return objects
-
 
 def create_page_template(metadata):
     """Create page templates for both page types"""
