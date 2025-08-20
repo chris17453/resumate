@@ -7,3 +7,6 @@
 [submodule "submodules/fluentui-system-icons"]
 	path = submodules/fluentui-system-icons
 	url = https://github.com/microsoft/fluentui-system-icons
+[submodule "submodules/simple-icons"]
+	path = submodules/simple-icons
+	url = https://github.com/simple-icons/simple-icons.git

@@ -24,3 +24,5 @@
 - [Building](submodules/fluentui-system-icons/assets/Building/SVG/ic_fluent_building_16_filled.svg)
 - [Phone](submodules/fluentui-system-icons/assets/Phone/SVG/ic_fluent_phone_16_filled.svg)
 - [Position/Trophy](submodules/fluentui-system-icons/assets/Trophy/SVG/ic_fluent_trophy_16_filled.svg)
+- [Briefcase](submodules/fluentui-system-icons/assets/Briefcase/PDF/ic_fluent_briefcase_16_filled.pdf)
+- [Certificate](submodules/fluentui-system-icons/assets/Certificate/SVG/ic_fluent_certificate_16_filled.svg)

@@ -1,7 +1,30 @@
 import yaml
+import subprocess
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT, TA_JUSTIFY
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.colors import HexColor
+from reportlab.lib import fonts
+from reportlab.pdfbase import pdfmetrics
+
+
+
+
+def find_font_file(font_name, font_style="Regular"):
+    try:
+        command = ["fc-list"]
+        if font_name:
+            command.extend(["|", "grep", font_name, "-i"])
+        if font_style:
+            command.extend(["|", "grep", font_style, "-i"])
+        command.extend(["|", "cut", "-d", ":", "-f", "1"])
+        
+        #print(" ".join(command))
+        output = subprocess.check_output(" ".join(command), shell=True).decode("utf-8").strip()
+        return output
+    except subprocess.CalledProcessError:
+        print(f"Error: Unable to find font file for '{font_name}'")
+        return None    
+
 
 # Mapping for text alignment to be used in style conversion
 alignment_mapping = {
@@ -39,6 +62,20 @@ def create_styles(style_data):
                 alignment = style_attrs['alignment']
 
 
+
+        # Check if font name is provided in the style attributes
+        if 'fontName' in style_attrs:
+            font_name = style_attrs['fontName']
+            font_style= style_attrs['fontStyle']
+            font_file = style_attrs.get('fontFile')  # Check if font file is provided
+            #if font_file==None:
+            #    font_file=find_font_file(font_name,font_style)
+            #if font_file:
+            #    print ("Font:",font_name,font_file)
+                # Register font using pdfmetrics
+                #pdfmetrics.registerTypeFace(pdfmetrics.EmbeddedType1Face(font_file, font_file))
+                #pdfmetrics.registerFont(pdfmetrics.Font(font_name, faceName, 'WinAnsiEncoding'))
+         
         # Create the custom style, ensuring that 'parent' is an actual ParagraphStyle object
         custom_styles[style_name] = ParagraphStyle(name=style_name, parent=parent_style, **style_attrs)
         bold=None

@@ -5,7 +5,7 @@ DATA_DIR=data
 #UUID:=$(shell uuidgen)
 UUID="TEST"
 RESUME_DIR=$(DATA_DIR)/$(UUID)
-YAML_FILE=$(RESUME_DIR)/resume.yaml
+RESUME_YAML=$(RESUME_DIR)/resume.yaml
 PDF_FILE=$(RESUME_DIR)/resume.pdf
 TEMPLATE_PDF_FILE=template/resume-1.yaml
 
@@ -15,24 +15,27 @@ TEMPLATE_PDF_FILE=template/resume-1.yaml
 all: $(PDF_FILE)
 
 template:
-	$(PYTHON) -m resumate.cli template $(YAML_FILE)
+	$(PYTHON) -m resumate.cli template $(RESUME_YAML)
 
 new_style:
 	$(PYTHON) -m resumate.cli new_style $(TEMPLATE_PDF_FILE)
 
 load:
-	$(PYTHON) -m resumate.cli load $(YAML_FILE)
+	$(PYTHON) -m resumate.cli load $(RESUME_YAML)
 
 save:
-	$(PYTHON) -m resumate.cli save $(YAML_FILE)
+	$(PYTHON) -m resumate.cli save $(RESUME_YAML)
 
 generate_pdf:
-	$(PYTHON) -m resumate.cli generate_pdf $(YAML_FILE)
+	$(PYTHON) -m resumate.cli generate_pdf $(RESUME_YAML)
+
+chris:new_style
+	$(PYTHON) -m resumate.cli generate_pdf data/cwatkins/watkins-chris-2024-05-resume.yaml
 
 
 generate_fake:new_style
-	$(PYTHON) -m resumate.cli generate_fake $(YAML_FILE)
-	$(PYTHON) -m resumate.cli generate_pdf $(YAML_FILE)
+	$(PYTHON) -m resumate.cli generate_fake $(RESUME_YAML)
+	$(PYTHON) -m resumate.cli generate_pdf $(RESUME_YAML)
 
 flaten-rect:
 	python resumate/svg_flatener.py --input submodules/logos/logos/aws-ec2.svg  --output submodules/logos/logos/aws-ec2-flatened.svg

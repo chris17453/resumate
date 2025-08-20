@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 faker = "*"
 reportlab = "*"
-pyyaml = "*"
 pdfplumber = "*"
 svglib = "*"
 matplotlib = "*"
@@ -14,4 +13,3 @@ matplotlib = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.11"
