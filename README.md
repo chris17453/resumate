@@ -13,6 +13,7 @@ Resumate is a Python-powered resume generator that treats your career like the e
 Built by someone who:
 - ✅ Automated 20,000+ VMs
 - ✅ Managed enterprise infrastructure  
+- ✅ **Physically mails resumes to executives** (yes, in 2025)
 - ❌ Refused to manually format another resume ever again
 
 ## ✨ Features That Actually Matter
@@ -20,7 +21,7 @@ Built by someone who:
 - **YAML-Powered**: Your resume data in clean, version-controllable YAML
 - **Template Engine**: Multiple templates from classic to "wow, how'd you do that?"
 - **Skill Ratings**: Visual skill bars because lists are boring
-- **Icon Support**: 1000+ tech icons from DevIcons, Font Awesome, Simple Icons
+- **Icon Support**: 2000+ tech icons built-in, plus use ANY custom SVG
 - **QR Codes**: For when you want to be *that* person (in a good way)
 - **Two-Page Support**: Different layouts for page 1 and continuation pages
 - **CI/CD Ready**: Generate resumes in your pipeline because why not?
@@ -85,12 +86,57 @@ skills:
 - category: Languages I Speak
   skills:
   - name: Python
-    rating: 5  # Daily driver
+    svg: python      # Just use the name - we'll find the icon
+    rating: 5
   - name: JavaScript
-    rating: 4  # We have a complicated relationship
-  - name: COBOL
-    rating: 2  # Don't ask
+    svg: javascript  # 2000+ icons built-in
+    rating: 4
+  - name: Internal Tool
+    svg: ./icons/internal.svg  # Or use your own SVG!
+    rating: 3
 ```
+
+## 🎨 Icons - Built-in and Bring Your Own
+
+### 2000+ Icons Included (Under 60MB!)
+
+We bundle **Font Awesome** and **Simple Icons** so you get instant access to virtually every tech logo and icon you need. Just use the name:
+
+```yaml
+skills:
+- name: Docker
+  svg: docker       # Finds Docker logo automatically
+- name: Kubernetes
+  svg: kubernetes   # Finds K8s logo
+- name: Team Lead
+  svg: users        # Font Awesome icons work too
+```
+
+### Custom Icons? Just Drop The Path!
+
+Got a special icon? Company logo? That perfect SVG you found? **Just use the file path**:
+
+```yaml
+- name: Secret Project
+  svg: ./my-icons/classified.svg           # Relative path
+- name: Corporate Tool
+  svg: /home/user/company/tool-icon.svg   # Absolute path
+- name: FluentUI Icon
+  svg: /opt/fluentui/assets/Trophy/SVG/ic_fluent_trophy_32_filled.svg
+```
+
+### Why Not FluentUI By Default?
+
+We love FluentUI's colorful icons, but they're **several hundred MB**. We chose Font Awesome + Simple Icons to keep the package lean. But if you want those pretty FluentUI icons, just clone them and reference the paths!
+
+### How Icon Resolution Works
+
+When you write `svg: something`, Resumate searches in order:
+1. **File exists?** → Uses it
+2. **In DevIcons?** → Uses it
+3. **In Simple Icons?** → Uses it  
+4. **In Font Awesome?** → Uses it
+5. **Can't find it?** → Logs warning, continues
 
 ## 🎨 Templates
 
@@ -114,11 +160,14 @@ skills:
 - category: Cloud Juggling
   skills:
   - name: AWS
-    svg: amazonwebservices
+    svg: amazonwebservices  # or just 'aws'
     rating: 5  # I dream in CloudFormation
   - name: Azure
     svg: azure  
     rating: 3  # When the client insists
+  - name: Our Platform
+    svg: ./company/platform-logo.svg  # Custom icon
+    rating: 5
 ```
 
 ### Dynamic QR Codes
@@ -162,8 +211,9 @@ Built with:
 
 Icons from:
 - DevIcons - All the tech logos
-- Font Awesome - Everything else
+- Font Awesome - Everything else (2000+ icons)
 - Simple Icons - The ones DevIcons missed
+- Your imagination - Custom SVGs welcome!
 
 ## 📜 License
 
